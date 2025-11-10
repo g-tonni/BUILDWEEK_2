@@ -10,9 +10,11 @@ const getArtist= function (){
         }
     })
     .then((artistDetails) => {
-        console.log('Dettagli artista|', artistDetails.artist())
+        console.log('Dettagli artista|', artistDetails)
     })
-    .catch(
+    .catch((err), 
         console.log('Errore recupero dei dati', err)
     )
 }
+
+getArtist()
