@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Spotify - Cerca</title>
+  </head>
+  <body id="font">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col col-3 bg-black p-4 min-vh-100">
+          <div class="mb-4">
+            <ul class="p-0 m-0">
+              <li>
+                <a href="#"><i class="bi bi-three-dots"></i></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="bi bi-house-door-fill"></i>
+                  <span class="m-0">Home</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="bi bi-search"></i>
+                  <span class="m-0">Cerca</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="bi bi-collection"></i>
+                  <span class="m-0">La tua libreria</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- FINE LINK 1 -->
+          <div>
+            <ul class="p-0 m-0">
+              <li>
+                <a href="#"
+                  ><i class="bi bi-plus-square-fill"></i>
+                  <span class="m-0">Crea Playlist</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="bi bi-heart-fill"></i>
+                  <span class="m-0">Brani che ti piacciono</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="bi bi-bookmark-fill"></i>
+                  <span class="m-0">I tuoi episodi</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- FINE LINK 2 -->
+          <hr class="border-light" />
+          <div>
+            <ul class="p-0 m-0" id="lista-podcast">
+              <li>early stage emily syndrome (sett-ott 2022)</li>
+              <li>Be The Young</li>
+              <li>"..." cit. Kimiko (lug-ago 2022)</li>
+              <li>saggio vibes💃🩰</li>
+              <li>main character energy (mag-giu 2022)</li>
+              <li>that fucking mood🔪</li>
+              <li>VEE, CARLOTTA E GIACOMO VANNO A BOSIO</li>
+              <li>An Emily Winchester kind of mood🔪🖕</li>
+              <li>landing page (mar-apr 2022)</li>
+              <li>2021 lol</li>
+              <li>cosa cazzo vuol dire questa affermazione (gen-fe...</li>
+              <li>honey and glass (nov-dic 2021)</li>
+              <li>(Revenge) Training Arc🦍</li>
+              <li>Lidia 💛 Emily</li>
+              <li>minecraft e nintendo switch (sep-oct 2021)</li>
+              <li>silvano d'orba? I hardly know her (lug - ago 2021)</li>
+              <li>Culo 2021</li>
+              <li>Frah Quintale Mix</li>
+              <li>Francesco Guccini Mix</li>
+            </ul>
+          </div>
+        </div>
+        <!-- FINE COLONNA SINISTRA -->
+
+        <div class="col col-7 bg-dark p-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex">
+              <div
+                class="bg-black bg-opacity-25 text-light rounded-circle text-center d-flex justify-content-center align-items-center p-2 me-3"
+                style="width: 40px; height: 40px"
+              >
+                <a
+                  href="#"
+                  class="text-center w-100 d-flex justify-content-center align-items-center text-decoration-none"
+                  ><i class="fas fa-chevron-left me-1"></i
+                ></a>
+              </div>
+              <div
+                class="bg-black bg-opacity-25 text-light rounded-circle text-center d-flex justify-content-center align-items-center p-2"
+                style="width: 40px; height: 40px"
+              >
+                <a
+                  href="#"
+                  class="text-center w-100 d-flex justify-content-center align-items-center text-decoration-none"
+                  ><i class="fas fa-chevron-right m-0 ms-1"></i
+                ></a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle d-flex align-items-center rounded-pill p-1 pe-3 bg-black border-0"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div
+                  style="width: 30px; height: 30px"
+                  class="overflow-hidden rounded-circle d-inline-block me-2"
+                >
+                  <img
+                    src="./assets/imgs/search/image-14.jpg"
+                    alt="Account"
+                    class="img-fluid"
+                  />
+                </div>
+                <p class="m-0 me-2">Giada</p>
+              </button>
+              <ul class="dropdown-menu bg-black p-1">
+                <li>
+                  <a
+                    class="dropdown-item text-light d-flex align-items-center px-1"
+                    href="#"
+                    ><div
+                      style="width: 30px; height: 30px"
+                      class="overflow-hidden rounded-circle d-inline-block me-2"
+                    >
+                      <img
+                        src="./assets/imgs/search/image-14.jpg"
+                        alt="Account"
+                        class="img-fluid"
+                      />
+                    </div>
+                    Account 2</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FINE PARTE COMUNE -->
+
+          <div class="container">
+            <div class="row my-5">
+              <div class="col col-12 col-md-4">
+                <a href="#">
+                  <div class="bg-secondary p-4 rounded-4 bg-opacity-25">
+                    <div
+                      class="rounded-circle overflow-hidden mb-3"
+                      style="width: 150px; height: 150px"
+                    >
+                      <img
+                        src="./assets/imgs/main/image-5.jpg"
+                        alt="img"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <a href="#" class="text-decoration-none"
+                      ><p class="fs-2 fw-bold m-0">Rap God</p></a
+                    >
+                    <a href="#" class="text-decoration-none"
+                      ><p class="m-0">Eminem</p></a
+                    >
+                  </div>
+                </a>
+              </div>
+              <div
+                class="col col-12 col-md-8 d-flex flex-column justify-content-around"
+              >
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <div
+                      style="width: 50px; height: 50px"
+                      class="rounded-3 overflow-hidden me-3"
+                    >
+                      <img
+                        src="./assets/imgs/search/image-42.png"
+                        alt="img"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div>
+                      <p class="m-0 fw-bold">Rap God</p>
+                      <p class="m-0 fs-7">Eminem</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p>2:33</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <div
+                      style="width: 50px; height: 50px"
+                      class="rounded-3 overflow-hidden me-3"
+                    >
+                      <img
+                        src="./assets/imgs/search/image-42.png"
+                        alt="img"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div>
+                      <p class="m-0 fw-bold">Rap God</p>
+                      <p class="m-0 fs-7">Eminem</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p>2:33</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <div
+                      style="width: 50px; height: 50px"
+                      class="rounded-3 overflow-hidden me-3"
+                    >
+                      <img
+                        src="./assets/imgs/search/image-42.png"
+                        alt="img"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div>
+                      <p class="m-0 fw-bold">Rap God</p>
+                      <p class="m-0 fs-7">Eminem</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p>2:33</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <div
+                      style="width: 50px; height: 50px"
+                      class="rounded-3 overflow-hidden me-3"
+                    >
+                      <img
+                        src="./assets/imgs/search/image-42.png"
+                        alt="img"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div>
+                      <p class="m-0 fw-bold">Rap God</p>
+                      <p class="m-0 fs-7">Eminem</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p>2:33</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-12 col-md-4 col-lg-2">
+                <div>
+                  <img src="./assets/imgs/main/image-14.jpg" alt="img" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FINE COLONNA CENTRALE -->
+
+        <div class="col col-2 min-vh-100 bg-black p-4">
+          <div class="d-flex justify-content-end mb-2">
+            <a href="#"><i class="bi bi-dash-lg ms-3 fs-6"></i></a>
+            <a href="#"><i class="bi bi-copy ms-3 fs-6"></i></a>
+            <a href="#"><i class="bi bi-x-lg ms-3 fs-6"></i></a>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-5">
+            <p class="text-light m-0 fw-bold fs-5">Attività amici</p>
+            <div>
+              <a href="#"><i class="bi bi-person-plus fs-4 m-0"></i></a>
+              <a href="#"><i class="bi bi-x-lg ms-3 fs-4 m-0"></i></a>
+            </div>
+          </div>
+          <div class="container mt-3">
+            <div class="row mb-5">
+              <div class="col-2 p-0 pe-3">
+                <img
+                  src="./assets/imgs/main/image-2.jpg"
+                  alt="Utente"
+                  class="rounded-circle w-100"
+                />
+              </div>
+              <div class="col-8 p-0">
+                <p class="m-0">Charlie Hookham</p>
+                <p class="m-0">In Camera • Yumi Zouma</p>
+                <p class="m-0">◎ EP III</p>
+              </div>
+              <div class="col-2 p-0">
+                <p class="text-end fs-7">4 ore</p>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-2 p-0 pe-3">
+                <img
+                  src="./assets/imgs/main/image-2.jpg"
+                  alt="Utente"
+                  class="rounded-circle w-100"
+                />
+              </div>
+              <div class="col-8 p-0">
+                <p class="m-0">lightdark02</p>
+                <p class="m-0">Aimed to Kill • Jade LeMac</p>
+                <p class="m-0">◎ Aimed to Kill</p>
+              </div>
+              <div class="col-2 p-0">
+                <p class="text-end fs-7">4 ore</p>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-2 p-0 pe-3">
+                <img
+                  src="./assets/imgs/main/image-2.jpg"
+                  alt="Utente"
+                  class="rounded-circle w-100"
+                />
+              </div>
+              <div class="col-8 p-0">
+                <p class="m-0">Valeria Traverso</p>
+                <p class="m-0">New Kings • Sleeping Wolf</p>
+                <p class="m-0">♫ Twint Badass mood</p>
+              </div>
+              <div class="col-2 p-0">
+                <p class="text-end fs-7">4 ore</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FINE COLONNA DESTRA -->
+      </div>
+    </div>
+    <footer
+      class="bg-dark p-4 position-fixed bottom-0 w-100 d-flex justify-content-between align-items-center border-top border-secondary"
+    >
+      <div class="d-flex h-100">
+        <div class="overflow-hidden rounded-2 me-3">
+          <img
+            src="./assets/imgs/search/image-14.jpg"
+            alt="Immagine"
+            style="width: 70px; height: 70px"
+          />
+        </div>
+        <div class="me-5">
+          <p class="m-0 fw-bold">Fat Funny Friend</p>
+          <p class="m-0">Queen</p>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="bi bi-heart"></i>
+        </div>
+      </div>
+      <!-- FINE PRIMA PARTE FOOTER -->
+      <div class="d-flex flex-column align-items-center w-50 px-5">
+        <div class="d-flex justify-content-between w-25">
+          <a href="#"><i class="bi bi-shuffle m-0"></i></a>
+          <a href="#"><i class="bi bi-skip-start-fill m-0"></i></a>
+          <a href="#"><i class="bi bi-play-circle-fill m-0"></i></a>
+          <a href="#"><i class="bi bi-skip-end-fill m-0"></i></a>
+          <a href="#"><i class="bi bi-repeat m-0"></i></a>
+        </div>
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <p class="m-0">0:50</p>
+          <div class="mx-3 flex-grow-1">
+            <div
+              class="progress"
+              role="progressbar"
+              aria-label="4px high"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="height: 4px"
+            >
+              <div
+                class="progress-bar text-bg-success"
+                style="width: 25%"
+              ></div>
+            </div>
+          </div>
+          <p class="m-0">3:50</p>
+        </div>
+      </div>
+      <!-- FINE SECONDA PARTE FOOTER -->
+      <div class="d-flex align-items-center">
+        <a href="#"><i class="bi bi-mic"></i></a>
+        <a href="#"><i class="bi bi-card-list"></i></a>
+        <a href="#"><i class="bi bi-pc-display"></i></a>
+        <a href="#"><i class="bi bi-volume-up"></i></a>
+        <div
+          class="progress"
+          role="progressbar"
+          aria-label="Success example 4px high"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="height: 4px; width: 70px"
+        >
+          <div class="progress-bar text-bg-success" style="width: 25%"></div>
+        </div>
+        <a href="#"><i class="bi bi-arrows-angle-expand"></i></a>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./scripts/home.js"></script>
+  </body>
+</html>
