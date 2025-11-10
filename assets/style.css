@@ -96,7 +96,11 @@ i {
 
 #lista-podcast li {
   margin: 8px 0;
-  font-size: 18px;
+  font-size: 16px;
+}
+
+p {
+  color: white;
 }
 
 /*!
@@ -8429,6 +8433,22 @@ textarea.form-control-lg {
 
 .fs-6 {
   font-size: 1rem !important;
+}
+
+.fs-7 {
+  font-size: 0.8rem !important;
+}
+
+.fs-8 {
+  font-size: 0.6rem !important;
+}
+
+.fs-9 {
+  font-size: 0.4rem !important;
+}
+
+.fs-10 {
+  font-size: 0.4rem !important;
 }
 
 .fst-italic {
