@@ -22,10 +22,20 @@ const getArtist= function (id){
     .then((artistDetails) => {
         console.log('Dettagli artista|', artistDetails)
         //Sostituisce l'immagine nell'header con quella dell'artista
-        topRow = document.getElementById('artist-img').src = artistDetails.picture_xl
+        const topRow = document.getElementById('artist-img').src = artistDetails.picture_xl
+
+        //Sostituisco il nome dell'artista
+        const artist = document.querySelector('h2')
+        console.log("NOME ARTISTA", artist.innerText= artistDetails.name)
+
+        //Sostituisco le vistualizzazioni
+        // const visuals = 
+        
 
         const songs = document.querySelector('div.container.mt-4')
         console.log(songs)
+        const songTitle = songs.createElemtent("div.col.col-6.pe-0")
+
     })
     .catch((err) => {
         console.log('Errore recupero dei dati', err)
