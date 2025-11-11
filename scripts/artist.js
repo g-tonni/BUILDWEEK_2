@@ -1,7 +1,8 @@
+//URL dell'endpoint
+const URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/yellowcard'
 //Recupera le informazioni dall'endpoint
-
 const getArtist= function (){
-    fetch( 'https://striveschool-api.herokuapp.com/api/deezer/search?q=asking+alexandria')
+    fetch(URL)
     .then((res) => {
         if(res.ok){
             return res.json()
@@ -11,10 +12,12 @@ const getArtist= function (){
     })
     .then((artistDetails) => {
         console.log('Dettagli artista|', artistDetails)
+
+        topRow = document.getElementById('artist-img').src = artistDetails.picture_xl
     })
-    .catch((err), 
+    .catch((err) => {
         console.log('Errore recupero dei dati', err)
-    )
+    })
 }
 
 getArtist()

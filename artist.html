@@ -90,10 +90,12 @@
         </div>
         <!-- FINE COLONNA SINISTRA -->
         <div class="col col-7 m-0 p-0">
+          <section id="header">
             <div class="container-fluid p-0">
                 <div class="row">
+                    <div class="col col-12">
                     <div class="position-relative pe-0">
-                        <img src="https://placehold.co/670x300/646464/FFFFFF/png" alt="">
+                        <img src="https://placehold.co/1300x500/545464/FFFFFF/png" alt="" class="img" id="artist-img" style="width: 100%; height: 30rem; object-fit: cover;">
                         <div class="position-absolute top-50 end-1000 ps-3 pt-4">
                             <i class="bi bi-patch-check-fill text fs-6"> <span>Artista verificato</span></i>
                             <h2 class="fs-1 text-white">Nome Artista</h2>
@@ -102,12 +104,65 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    
+          </section>
+          <section>
+            <div class="container bg-dark pt-3">
+              <div class="row">
+                <div class="col hstack gap-3">
+                  <i class="bi bi-play-circle-fill text-primary fs-1"></i>
+                  <button type="button" class="btn btn-outline-light"><span class="fs-6">FOLLOWING</span></button>
+                  <i class="bi bi-three-dots"></i>
                 </div>
+                <div class="container text-white my-2">
+                  <div class="row mt-2">
+                    <div class="col col-8 py-3" id="popolari"><h4>Popolari</h4>
+                      <div class="container mt-4">
+                        <div class="row align-items-baseline">
+                          <div class="col col-6 pe-0">
+                            <div class="d-flex hstack gap-3 mb-2">
+                              <p class="m-0">1</p>
+                              <img src="https://placehold.co/60x60/545464/FFFFFF/png" alt="" width="50">
+                              <p class="m-0">Ocean Avenue</p>
+                            </div>
+                          </div>
+                          <div class="col col-3">  
+                            <div class="gap-3 mb-2">
+                              <p class="">1249102</p>
+                            </div>
+                          </div>
+                          <div class="col col-3">  
+                            <div class="gap-3 mb-2">
+                              <p class="">3.50</p>
+                            </div>
+                          </div>
+                        </div>  
+                      </div>
+                    </div>
+                    <div class="col col-4 py-3" id="piaciuti">
+                      <h4>Brani che ti piacciono</h4>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col p-0">
+                            <div class="p-0">
+                              <span class="position-relative">
+                                <img src="https://placehold.co/80x80/545464/FFFFFF/png" alt="" class="rounded-circle">
+                                <i class="bi bi-heart-fill position-absolute top-100 start-100"></i>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <p>Hai messo Mi piace a 11 brani</p>
+                            <p>di Yellowcard</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
+        </section>
         <!-- FINE COLONNA CENTRALE -->
         <div class="col col-2 min-vh-100 bg-black p-4">
           <div class="d-flex justify-content-end mb-2">
