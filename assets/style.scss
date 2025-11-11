@@ -91,6 +91,8 @@ $font-sizes: map-merge($font-sizes, $new-font-sizes);
   font-style: normal;
 }
 
+$link-decoration: none;
+
 ul {
   list-style-type: none;
 }
@@ -115,6 +117,7 @@ i {
 #lista-podcast li {
   margin: 8px 0;
   font-size: 16px;
+  color: rgb(102, 102, 102);
 }
 
 p {
