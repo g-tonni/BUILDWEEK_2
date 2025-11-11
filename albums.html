@@ -15,11 +15,10 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link rel="stylesheet" href="./assets/style.css" />
-    <link rel="stylesheet" href="./albums.css" />
     <title>Spotify - Album</title>
   </head>
   <body id="font">
-    <div class="container-fluid">
+    <div class="container-fluid" id="cont-gen">
       <div class="row">
         <div class="col col-3 bg-black p-4 min-vh-100">
           <div class="mb-4">
@@ -30,13 +29,13 @@
                 ></a>
               </li>
               <li>
-                <a href="#" class="text-light opacity-75"
+                <a href="home.html" class="text-light opacity-75"
                   ><i class="bi bi-house-door-fill"></i>
                   <span class="m-0 fw-bold text-light opacity-75">Home</span></a
                 >
               </li>
               <li>
-                <a href="#" class="text-light opacity-75"
+                <a href="search.html" class="text-light opacity-75"
                   ><i class="bi bi-search"></i>
                   <span class="m-0 fw-bold text-light opacity-75"
                     >Cerca</span
@@ -196,30 +195,13 @@
             class="w-100 d-flex flex-wrap justify-content-start pt-2"
           >
             <!-- INIZIO DIV CON NOME E COPERTINA ALBUM -->
-            <div id="album" class="d-flex flex-grow-1">
-              <img src="./assets/imgs/main/image-19.jpg" id="imgAlbum" />
-              <div
-                id="albumText"
-                class="d-flex flex-column flex-grow-1 justify-content-end"
-              >
-                <p class="fs-6 m-0">ALBUM</p>
-                <h1 id="titoloAlbum">Gioventù brucata</h1>
-
-                <p class="m-0">
-                  <img
-                    src="./assets/imgs/main/image-5.jpg"
-                    id="imgYellowBottom"
-                  />
-                  Pinguini Tattici Nucleari · 2017 · 12 brani, 53 min 20 sec.
-                </p>
-              </div>
-            </div>
+            <div id="album" class="d-flex"></div>
             <!-- FINE DIV CON NOME E COPERTINA ALBUM -->
           </div>
           <!-- FINE DIV GIALLO -->
 
           <!-- INIZIO DIV NERO CHE STA SOPRA LA PARTE FINALE DEL DIV GIALLO -->
-          <div id="divNero">
+          <div id="divNero" class="pb-5">
             <div id="albumIconsDiv">
               <a href="#"
                 ><i class="bi bi-play-circle-fill m-0" id="playButton"></i
@@ -233,7 +215,7 @@
                 <th class="primaCol">#</th>
                 <th class="secondaCol">TITOLO</th>
                 <th class="terzaCol">RIPRODUZIONI</th>
-                <th class="quartaCol"><i class="bi bi-clock"></i></th>
+                <th class="quartaCol"><i class="bi bi-clock m-0"></i></th>
               </tr>
               <tbody id="elenco-canzoni"></tbody>
             </table>

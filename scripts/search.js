@@ -92,12 +92,20 @@ const createBrani = function (obj) {
             </div>
         </div>
         <div>
-            <p>${(obj.duration - (obj.duration % 60)) / 60}:${
+            <p>${(obj.duration - (obj.duration % 60)) / 60}:${num(
     obj.duration % 60
-  }</p>
+  )}</p>
         </div>
     </div>
     `
+}
+
+const num = function (num) {
+  if (num < 10) {
+    return '0' + num
+  } else {
+    return num
+  }
 }
 
 const album = document.getElementById('row-album')

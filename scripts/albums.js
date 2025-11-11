@@ -17,6 +17,8 @@ fetch(linkAlbum + id)
   .then((dati) => {
     console.log(dati)
 
+    createIntestazione(dati)
+
     for (let i = 0; i < dati.tracks.data.length; i++) {
       crateCanzoni(dati.tracks.data[i], i + 1)
     }
@@ -37,8 +39,39 @@ const crateCanzoni = function (obj, i) {
     <td class="terzaCol pt-4 pb-2">${obj.rank}</td>
     <td class="quartaCol pt-4 pb-2">${
       (obj.duration - (obj.duration % 60)) / 60
-    }:${obj.duration % 60}</td>
+    }:${num(obj.duration % 60)}</td>
    </tr>
+    `
+}
+
+const num = function (num) {
+  if (num < 10) {
+    return '0' + num
+  } else {
+    return num
+  }
+}
+
+const primoContenitore = document.getElementById('album')
+const createIntestazione = function (obj) {
+  primoContenitore.innerHTML += `
+    
+    <img src="${obj.cover_big}" id="imgAlbum" />
+    <div
+    id="albumText"
+    class="d-flex flex-column flex-grow-1 justify-content-end"
+    >
+        <p class="fs-6 m-0">ALBUM</p>
+        <h1 id="titoloAlbum">${obj.title}</h1>
+
+        <p class="m-0">
+            <img
+            src="${obj.artist.picture_medium}"
+            id="imgYellowBottom"
+            />
+            ${obj.artist.name} · ${obj.tracks.data.length} brani
+        </p>
+    </div>
 
     `
 }
