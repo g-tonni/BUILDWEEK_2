@@ -113,16 +113,7 @@ p {
   background-color: black;
 }
 
-#colonnaCentrale {
-  background-color: #c9ad47;
-}
-
 /* INIZIO DIV GIALLO */
-#divGiallo {
-  padding: 20px;
-  align-content: start;
-}
-
 #headerDivGiallo {
   height: 40px;
 }
@@ -151,17 +142,8 @@ p {
   width: 100%;
 }
 
-#imgAlbum {
-  width: 220px;
-  height: 220px;
-  margin-top: 20px;
-  margin-right: 20px;
-}
-
 #titoloAlbum {
   color: white;
-  font-size: 70px;
-  margin-bottom: 20px;
 }
 
 #imgYellowBottom {
@@ -239,6 +221,23 @@ table {
     transform: rotate(360deg);
   }
 }
+.bottoni-album {
+  background-color: transparent;
+  text-align: left;
+  padding: 0;
+  font-weight: bold;
+}
+
+.bottoni-album,
+.artisti-album {
+  color: rgba(255, 255, 255, 0.787);
+}
+
+.bottoni-album:hover,
+.artisti-album:hover {
+  color: white;
+}
+
 /*!
  * Bootstrap  v5.3.8 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
@@ -8723,6 +8722,14 @@ textarea.form-control-lg {
   font-size: 1rem !important;
 }
 
+.fs-big-s {
+  font-size: calc(1.625rem + 4.5vw) !important;
+}
+
+.fs-big {
+  font-size: calc(1.525rem + 3.3vw) !important;
+}
+
 .fs-7 {
   font-size: 0.8rem !important;
 }
@@ -12380,6 +12387,12 @@ textarea.form-control-lg {
   }
   .fs-4 {
     font-size: 1.5rem !important;
+  }
+  .fs-big-s {
+    font-size: 5rem !important;
+  }
+  .fs-big {
+    font-size: 4rem !important;
   }
 }
 @media print {
