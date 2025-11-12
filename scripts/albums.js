@@ -1,19 +1,29 @@
+const backBtn = document.getElementById("backBtn")
+backBtn.addEventListener("click", () => {
+  window.history.back() // torna alla pagina precedente
+})
+
+const nextBtn = document.getElementById("nextBtn")
+nextBtn.addEventListener("click", () => {
+  window.history.forward() // va alla pagina successiva nella cronologia
+})
+
 let img
 
-const linkAlbum = 'https://striveschool-api.herokuapp.com/api/deezer/album/'
+const linkAlbum = "https://striveschool-api.herokuapp.com/api/deezer/album/"
 
 const url = location.search
 // console.log(url)
 const allTheParameters = new URLSearchParams(url)
-const id = allTheParameters.get('id')
-console.log('ID', id)
+const id = allTheParameters.get("id")
+console.log("ID", id)
 
 fetch(linkAlbum + id)
   .then((res) => {
     if (res.ok) {
       return res.json()
     } else {
-      throw new Error('ERRORE NELLA RISPOSTA')
+      throw new Error("ERRORE NELLA RISPOSTA")
     }
   })
   .then((dati) => {
@@ -26,11 +36,11 @@ fetch(linkAlbum + id)
       console.log(dati.tracks.data[i].preview)
     }
 
-    let img = document.getElementById('img-details')
-    const canvas = document.getElementById('imgCanvas')
-    const ctx = canvas.getContext('2d')
+    let img = document.getElementById("img-details")
+    const canvas = document.getElementById("imgCanvas")
+    const ctx = canvas.getContext("2d")
 
-    img.crossOrigin = 'Anonymous'
+    img.crossOrigin = "Anonymous"
 
     img.onload = function () {
       canvas.width = img.width
@@ -58,17 +68,17 @@ fetch(linkAlbum + id)
 
       const averageColor = `rgb(${avgR}, ${avgG}, ${avgB})`
 
-      console.log('Colore medio:', averageColor)
+      console.log("Colore medio:", averageColor)
 
-      const col = document.getElementById('colonnaCentrale')
+      const col = document.getElementById("colonnaCentrale")
       col.style.backgroundColor = averageColor
     }
   })
   .catch((err) => {
-    console.log('ERRORE', err)
+    console.log("ERRORE", err)
   })
 
-const contenitoreCanzoni = document.getElementById('elenco-canzoni')
+const contenitoreCanzoni = document.getElementById("elenco-canzoni")
 const crateCanzoni = function (obj, i) {
   contenitoreCanzoni.innerHTML += `
     
@@ -93,13 +103,13 @@ const crateCanzoni = function (obj, i) {
 
 const num = function (num) {
   if (num < 10) {
-    return '0' + num
+    return "0" + num
   } else {
     return num
   }
 }
 
-const primoContenitore = document.getElementById('album')
+const primoContenitore = document.getElementById("album")
 const createIntestazione = function (obj) {
   primoContenitore.innerHTML += `
     <div class="col col-12 col-md-4 d-flex flex-column justify-content-end">
@@ -130,26 +140,26 @@ const playAudio = function (url) {
 
   audio = new Audio(audioURL)
 
-  const playButton = document.getElementById('play')
-  const pauseButton = document.getElementById('pause')
+  const playButton = document.getElementById("play")
+  const pauseButton = document.getElementById("pause")
   console.log(playButton)
   console.log(audio)
 
   audio.play()
-  pauseButton.classList.remove('d-none')
-  playButton.classList.add('d-none')
-  playButton.innerHTML = ''
+  pauseButton.classList.remove("d-none")
+  playButton.classList.add("d-none")
+  playButton.innerHTML = ""
   playButton.appendChild(audio)
-  audio.addEventListener('canplaythrough', (event) => {
-    playButton.addEventListener('click', () => {
-      pauseButton.classList.remove('d-none')
-      playButton.classList.add('d-none')
+  audio.addEventListener("canplaythrough", (event) => {
+    playButton.addEventListener("click", () => {
+      pauseButton.classList.remove("d-none")
+      playButton.classList.add("d-none")
       audio.play()
     })
-    pauseButton.addEventListener('click', () => {
-      pauseButton.classList.add('d-none')
-      playButton.classList.remove('d-none')
-      console.log('AUDIO PAUSA', audio)
+    pauseButton.addEventListener("click", () => {
+      pauseButton.classList.add("d-none")
+      playButton.classList.remove("d-none")
+      console.log("AUDIO PAUSA", audio)
       audio.pause()
     })
   })
