@@ -9,9 +9,18 @@ const randomArt = function (){
 
 console.log(randomArt())
 
+const url = location.search
+console.log(url)
+const allSearchPar = new URLSearchParams(url)
+const id = allSearchPar.get('id').toString()
+console.log('ID', id)
+
+urlArtist = URL + id
+console.log();
+
 //Recupera le informazioni dall'endpoint
-const getArtist= function (id){
-    fetch(URL + randomArt())
+const getArtist= function (){
+    fetch(URL + id)
     .then((res) => {
         if(res.ok){
             return res.json()
