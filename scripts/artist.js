@@ -9,14 +9,12 @@ const randomArt = function (){
 
 console.log(randomArt())
 
+//Recupero l'id dell'artista dall'URL
 const url = location.search
 console.log(url)
 const allSearchPar = new URLSearchParams(url)
 const id = allSearchPar.get('id').toString()
 console.log('ID', id)
-
-urlArtist = URL + id
-console.log();
 
 //Recupera le informazioni dall'endpoint
 const getArtist= function (){
@@ -93,9 +91,9 @@ const getArtist= function (){
                 for (let i = 0; i < bestSongs.total; i++) {
                     //Converto la durata in secondi a mm:ss
                     let duration
-                    if (bestSongs.data[i].duration%60 > 9) {
-                        const seconds = bestSongs.data[i].duration%60
-                        const minutes = Math.ceil(bestSongs.data[i].duration/60)
+                    if ((bestSongs.data[i].duration)%60 > 9) {
+                        const seconds = (bestSongs.data[i].duration)%60
+                        const minutes = Math.ceil((bestSongs.data[i].duration)/60)
                         duration = minutes + ":" + seconds
                         console.log('DURATA', duration)
                     } else {
@@ -129,14 +127,14 @@ const getArtist= function (){
                     songInfo.classList.add('row')
                     songInfo.classList.add('align-items-baseline')
                     songInfo.innerHTML = `
-                                    <div class="col col-7 pe-0">
+                                    <div class="col col-8 pe-0">
                                         <div class="d-flex hstack gap-3 mb-2">
                                         <p class="m-0">${i+1}</p>
                                         <img src="${albumImage}" alt="" width="50">
                                         <p class="m-0">${songName}</p>
                                         </div>
                                     </div>
-                                    <div class="col col-3">  
+                                    <div class="col col-2">  
                                         <div class="gap-3 mb-2">
                                         <p class="">${nListeners}</p>
                                         </div>
@@ -149,6 +147,9 @@ const getArtist= function (){
                                     `
                                     songs.appendChild(songInfo)
                                 }
+
+                                document.querySelector('footer > a:last-of-type')
+                                console.log('CERCO IL FOOTER', footer.querySelector('a'))
                 })
                 .catch((err) => {
                     console.log('Errore recupero del best of', err)
@@ -157,17 +158,6 @@ const getArtist= function (){
         
         bestOf(bestOfArtist)
         
-        // class Song {
-        //     constructor(_songName, _albumImage, _nListeners, _songLength){
-        //     this.songName = _songName
-        //     this.albumImage = _albumImage
-        //     this.nListeners = _nListeners
-        //     this.songLength = _songLength
-        //     }
-        // }
-
-
-
     })
     .catch((err) => {
         console.log('Errore recupero dei dati', err)
