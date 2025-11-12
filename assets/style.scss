@@ -93,7 +93,7 @@ $font-sizes: map-merge($font-sizes, $new-font-sizes);
 
 $link-decoration: none;
 
-$new-primary: #20D760;
+$new-primary: #20d760;
 $new-dark: #111111;
 $dark-light: #323232;
 $dark-unlight: #171717;
@@ -107,9 +107,8 @@ $new-theme-colors: (
 
 $theme-colors: map-merge($theme-colors, $new-theme-colors);
 
-
-#prima-parte-home{
-  box-shadow: inset 200px -150px 300px 50px rgba(0,0,0,1);
+#prima-parte-home {
+  box-shadow: inset 200px -150px 300px 50px rgba(0, 0, 0, 1);
 }
 
 ul {
@@ -253,6 +252,19 @@ table {
   text-align: end;
   width: 30%;
   padding-right: 50px;
+}
+
+#footer-sfumato {
+  background: linear-gradient(
+    0deg,
+    hsla(0, 0%, 0%, 1) 32%,
+    rgba(0, 0, 0, 0.834) 67%,
+    rgba(0, 0, 0, 0.288) 100%
+  );
+}
+
+#footer-mobile {
+  max-width: 95%;
 }
 
 @import './scss/bootstrap.scss';
