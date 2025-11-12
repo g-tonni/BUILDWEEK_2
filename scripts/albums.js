@@ -55,18 +55,14 @@ const num = function (num) {
 const primoContenitore = document.getElementById('album')
 const createIntestazione = function (obj) {
   primoContenitore.innerHTML += `
-    <div class="text-center w-100 p-4 p-sm-0 pe-sm-3 d-flex d-md-none">
-    <img src="${obj.cover_big}" class="img-fluid"/>
-    </div>
-    <div class="text-center w-50 p-4 p-sm-0 pe-sm-3 d-none d-md-flex">
-    <img src="${obj.cover_big}" class="img-fluid"/>
+    <div class="col col-12 col-md-4 d-flex flex-column justify-content-end">
+      <img src="${obj.cover_big}" class="img-fluid shadow"/>
     </div>
     <div
-    id="albumText"
-    class="d-flex flex-column flex-grow-1 justify-content-end p-4 p-sm-0"
+    class="col col-12 col-md-8 mt-4 d-flex flex-column justify-content-end"
     >
          <p class="fs-6 m-0">ALBUM</p>
-         <h1 class="text-white fs-big fs-lg-big-s mb-4">${obj.title}</h1>
+         <h1 class="text-white fs-big fs-lg-big-s mb-4 text-truncate fw-bolder">${obj.title}</h1>
 
         <p class="m-0">
             <img
