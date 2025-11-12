@@ -208,9 +208,13 @@ table {
   max-width: 95%;
 }
 
-.vinile {
+.vinile-statico {
   width: 40px;
+}
+
+.vinile {
   animation: spin 7s linear infinite;
+  animation-fill-mode: forwards;
 }
 
 @keyframes spin {

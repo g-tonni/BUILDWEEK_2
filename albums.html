@@ -332,13 +332,15 @@
         <div class="rounded-circle">
           <img
             src="./assets/imgs/main/vinile-removebg-preview.png"
-            class="me-3 vinile"
+            class="me-3 vinile-statico"
+            id="img-vinile"
           />
         </div>
         <p class="flex-grow-1 m-0 text-truncate">Titolo canzone</p>
         <a href="#"><i class="bi bi-pc-display fs-4 m-0 me-3"></i></a>
         <a href="#"><i class="bi bi-heart m-0 me-3"></i></a>
-        <a href="#"><i class="bi bi-caret-right-fill m-0"></i></a>
+        <a><i class="bi bi-caret-right-fill m-0" id="play-mobile"></i></a>
+        <a><i class="bi bi-pause-fill m-0 d-none" id="pause-mobile"></i></a>
       </div>
       <div class="d-flex justify-content-evenly py-3" id="footer-sfumato">
         <a
@@ -386,7 +388,7 @@
       </div>
       <!-- FINE PRIMA PARTE FOOTER -->
       <div class="d-flex flex-column align-items-center w-50 px-5">
-        <div class="d-flex justify-content-between w-25">
+        <div class="d-flex justify-content-between">
           <a href="#"><i class="bi bi-shuffle m-0 me-3"></i></a>
           <a href="#"><i class="bi bi-skip-start-fill m-0 me-3"></i></a>
           <a>

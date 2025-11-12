@@ -6,7 +6,7 @@ const url = location.search
 // console.log(url)
 const allTheParameters = new URLSearchParams(url)
 const id = allTheParameters.get('id')
-console.log('ID', id)
+// console.log('ID', id)
 
 fetch(linkAlbum + id)
   .then((res) => {
@@ -17,13 +17,13 @@ fetch(linkAlbum + id)
     }
   })
   .then((dati) => {
-    console.log(dati)
+    // console.log(dati)
 
     createIntestazione(dati)
 
     for (let i = 0; i < dati.tracks.data.length; i++) {
       crateCanzoni(dati.tracks.data[i], i + 1)
-      console.log(dati.tracks.data[i].preview)
+      // console.log(dati.tracks.data[i].preview)
     }
 
     let img = document.getElementById('img-details')
@@ -58,7 +58,7 @@ fetch(linkAlbum + id)
 
       const averageColor = `rgb(${avgR}, ${avgG}, ${avgB})`
 
-      console.log('Colore medio:', averageColor)
+      // console.log('Colore medio:', averageColor)
 
       const col = document.getElementById('colonnaCentrale')
       col.style.backgroundColor = averageColor
@@ -124,6 +124,7 @@ const createIntestazione = function (obj) {
 }
 
 let audio
+const vinile = document.getElementById('img-vinile')
 
 const playAudio = function (url) {
   const audioURL = url
@@ -132,12 +133,19 @@ const playAudio = function (url) {
 
   const playButton = document.getElementById('play')
   const pauseButton = document.getElementById('pause')
-  console.log(playButton)
-  console.log(audio)
+  const playButtonMobile = document.getElementById('play-mobile')
+  const pauseButtonMobile = document.getElementById('pause-mobile')
+  // console.log(playButton)
+  // console.log(audio)
 
   audio.play()
+
+  vinile.classList.add('vinile')
+
   pauseButton.classList.remove('d-none')
   playButton.classList.add('d-none')
+  pauseButtonMobile.classList.remove('d-none')
+  playButtonMobile.classList.add('d-none')
   playButton.innerHTML = ''
   playButton.appendChild(audio)
   audio.addEventListener('canplaythrough', (event) => {
@@ -149,6 +157,19 @@ const playAudio = function (url) {
     pauseButton.addEventListener('click', () => {
       pauseButton.classList.add('d-none')
       playButton.classList.remove('d-none')
+      console.log('AUDIO PAUSA', audio)
+      audio.pause()
+    })
+    playButtonMobile.addEventListener('click', () => {
+      vinile.classList.add('vinile')
+      pauseButtonMobile.classList.remove('d-none')
+      playButtonMobile.classList.add('d-none')
+      audio.play()
+    })
+    pauseButtonMobile.addEventListener('click', () => {
+      vinile.classList.remove('vinile')
+      pauseButtonMobile.classList.add('d-none')
+      playButtonMobile.classList.remove('d-none')
       console.log('AUDIO PAUSA', audio)
       audio.pause()
     })

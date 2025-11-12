@@ -124,7 +124,7 @@
           </div>
         </div>
         <!-- FINE COLONNA SINISTRA -->
-        <div class="col col-7 m-0 p-0 position-relative">
+        <div class="col col-12 col-md-7 m-0 p-0 position-relative">
 
           <div
             class="d-none d-md-flex justify-content-between align-items-center p-4 position-absolute z-1 w-100"
@@ -219,7 +219,7 @@
                 </div>
                 <div class="container text-white my-2">
                   <div class="row mt-2">
-                    <div class="col col-8 py-3" id="popolari"><h4>Popolari</h4>
+                    <div class="col col-12 col-md-8 py-3" id="popolari"><h4>Popolari</h4>
                       <div class="container mt-4">
                         <!-- <div class="row align-items-baseline">
                           <div class="col col-6 pe-0">
@@ -242,7 +242,7 @@
                         </div>   -->
                       </div>
                     </div>
-                    <div class="col col-4 py-3" id="piaciuti">
+                    <div class="col col-4 py-3 d-none d-md-flex flex-column" id="piaciuti">
                       <h4>Brani che ti piacciono</h4>
                       <div class="container">
                         <div class="row">
@@ -359,7 +359,8 @@
       </div>
     </div>
 
-    <!--  FOOTER MOBILE -->
+    <!-- FOOTER MOBILE -->
+
     <footer
       class="d-flex flex-column position-fixed bottom-0 w-100 mx-3 d-md-none"
       id="footer-mobile"
@@ -368,15 +369,17 @@
         class="d-flex bg-dark-light justify-content-evenly align-items-center px-3 py-2 rounded-3"
       >
         <div class="rounded-circle">
-           <img
+          <img
             src="./assets/imgs/main/vinile-removebg-preview.png"
-            class="me-3 vinile"
+            class="me-3 vinile-statico"
+            id="img-vinile"
           />
         </div>
         <p class="flex-grow-1 m-0 text-truncate">Titolo canzone</p>
         <a href="#"><i class="bi bi-pc-display fs-4 m-0 me-3"></i></a>
         <a href="#"><i class="bi bi-heart m-0 me-3"></i></a>
-        <a href="#"><i class="bi bi-caret-right-fill m-0"></i></a>
+        <a><i class="bi bi-caret-right-fill m-0" id="play-mobile"></i></a>
+        <a><i class="bi bi-pause-fill m-0 d-none" id="pause-mobile"></i></a>
       </div>
       <div class="d-flex justify-content-evenly py-3" id="footer-sfumato">
         <a
@@ -423,13 +426,16 @@
         </div>
       </div>
       <!-- FINE PRIMA PARTE FOOTER -->
-      <div
-        class="d-flex flex-column align-items-center w-50 px-5 justify-content-center"
-      >
+      <div class="d-flex flex-column align-items-center w-50 px-5">
         <div class="d-flex justify-content-between">
           <a href="#"><i class="bi bi-shuffle m-0 me-3"></i></a>
           <a href="#"><i class="bi bi-skip-start-fill m-0 me-3"></i></a>
-          <a href="#"><i class="bi bi-play-circle-fill m-0 me-3"></i></a>
+          <a>
+            <i class="bi bi-play-circle-fill m-0 me-3" id="play"></i>
+          </a>
+          <a id="pause" class="d-none">
+            <i class="bi bi-pause-circle-fill m-0 me-3"></i>
+          </a>
           <a href="#"><i class="bi bi-skip-end-fill m-0 me-3"></i></a>
           <a href="#"><i class="bi bi-repeat m-0"></i></a>
         </div>
