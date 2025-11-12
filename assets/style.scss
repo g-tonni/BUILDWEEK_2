@@ -91,6 +91,27 @@ $font-sizes: map-merge($font-sizes, $new-font-sizes);
   font-style: normal;
 }
 
+$link-decoration: none;
+
+$new-primary: #20D760;
+$new-dark: #111111;
+$dark-light: #323232;
+$dark-unlight: #171717;
+
+$new-theme-colors: (
+  'primary': $new-primary,
+  'dark': $new-dark,
+  'dark-light': $dark-light,
+  'dark-unlight': $dark-unlight,
+);
+
+$theme-colors: map-merge($theme-colors, $new-theme-colors);
+
+
+#prima-parte-home{
+  box-shadow: inset 200px -150px 300px 50px rgba(0,0,0,1);
+}
+
 ul {
   list-style-type: none;
 }
@@ -115,10 +136,123 @@ i {
 #lista-podcast li {
   margin: 8px 0;
   font-size: 16px;
+  color: rgb(102, 102, 102);
 }
 
 p {
   color: white;
+}
+
+#cont-gen {
+  padding-bottom: 120px;
+  background-color: black;
+}
+
+#colonnaCentrale {
+  background-color: #c9ad47;
+}
+
+/* INIZIO DIV GIALLO */
+#divGiallo {
+  padding: 20px;
+  align-content: start;
+}
+
+#headerDivGiallo {
+  height: 40px;
+}
+
+#cardTopRight {
+  border-radius: 10%;
+  /* CAMBIARE QUESTA WIDTH PER LA CARD IN ALTO A DESTRA */
+  width: 200px;
+  height: fit-content;
+  padding: 2px;
+  border-radius: 50px;
+}
+
+#imgTopRight {
+  width: 25px;
+  border-radius: 50%;
+}
+
+#album {
+  height: fit-content;
+}
+
+#albumText {
+  width: 100%;
+}
+
+#imgAlbum {
+  width: 220px;
+  height: 220px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#titoloAlbum {
+  color: white;
+  font-size: 70px;
+  margin-bottom: 20px;
+}
+
+#imgYellowBottom {
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+/* FINE DIV GIALLO */
+
+/* INIZIO DIV NERO */
+#divNero {
+  background: linear-gradient(
+    0deg,
+    rgb(15, 15, 15) 84%,
+    hsla(0, 0%, 100%, 0) 100%
+  );
+  padding: 20px;
+}
+
+#albumIconsDiv {
+  margin-bottom: 15px;
+}
+
+#albumIconsDiv a {
+  margin-right: 18px;
+}
+
+#playButton {
+  color: #18cf58;
+}
+
+table {
+  width: 100%;
+}
+
+#primaRigaTabella {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.322);
+}
+
+.primaCol {
+  text-align: center;
+  width: 5%;
+}
+
+.secondaCol {
+  text-align: start;
+  width: 35%;
+}
+
+.terzaCol {
+  text-align: end;
+  width: 30%;
+}
+
+.quartaCol {
+  text-align: end;
+  width: 30%;
+  padding-right: 50px;
 }
 
 @import './scss/bootstrap.scss';
