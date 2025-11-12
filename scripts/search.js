@@ -25,7 +25,7 @@ const createBase = function(id){
   rowBase.innerHTML += `
   
   <div class="col-6 col-md-4 col-lg-3 altro-cards">
-    <a href=""
+    <a href="albums.html?id=${dati.id}"
       ><div class="bg-dark-unlight rounded p-2">
         <img
           src="${dati.cover_big}"
