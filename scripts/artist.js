@@ -39,6 +39,7 @@ const getArtist = function () {
 
       //Sostituisco il nome dell'artista nell'elemento partendo da id='headers'
       const artist = document.querySelector('h2')
+      artist.innerText = artistDetails.name
       // console.log('NOME ARTISTA', (artist.innerText = artistDetails.name))
 
       //Sostituisco il numero dei fan nell'elemento partendo da id='headers'
@@ -177,6 +178,8 @@ const getArtist = function () {
 getArtist()
 
 let audio
+
+const barraProgresso = document.getElementById('barra-progresso')
 const vinile = document.getElementById('img-vinile')
 
 const playAudio = function (url) {
@@ -184,14 +187,17 @@ const playAudio = function (url) {
 
   audio = new Audio(audioURL)
 
-  const playButton = document.getElementById('play')
-  const pauseButton = document.getElementById('pause')
+  const playButton = document.getElementById('play-album')
+  console.lo
+  const pauseButton = document.getElementById('pause-album')
   const playButtonMobile = document.getElementById('play-mobile')
   const pauseButtonMobile = document.getElementById('pause-mobile')
   // console.log(playButton)
   // console.log(audio)
 
   audio.play()
+
+  console.log(audio.currentTime)
 
   vinile.classList.add('vinile')
 
@@ -201,7 +207,14 @@ const playAudio = function (url) {
   playButtonMobile.classList.add('d-none')
   playButton.innerHTML = ''
   playButton.appendChild(audio)
+
   audio.addEventListener('canplaythrough', (event) => {
+    /* console.log('DURATA', audio.duration)
+     */
+    audio.ontimeupdate = function () {
+      barraProgressoFunz(audio)
+    }
+
     playButton.addEventListener('click', () => {
       pauseButton.classList.remove('d-none')
       playButton.classList.add('d-none')
@@ -210,8 +223,13 @@ const playAudio = function (url) {
     pauseButton.addEventListener('click', () => {
       pauseButton.classList.add('d-none')
       playButton.classList.remove('d-none')
-      console.log('AUDIO PAUSA', audio)
+      console.log(
+        'PERCENTUALE',
+        Math.ceil((audio.currentTime / audio.duration) * 100)
+      )
+      // console.log('AUDIO PAUSA', audio)
       audio.pause()
+      console.log(audio.currentTime)
     })
     playButtonMobile.addEventListener('click', () => {
       vinile.classList.add('vinile')
@@ -223,8 +241,14 @@ const playAudio = function (url) {
       vinile.classList.remove('vinile')
       pauseButtonMobile.classList.add('d-none')
       playButtonMobile.classList.remove('d-none')
-      console.log('AUDIO PAUSA', audio)
+      // console.log('AUDIO PAUSA', audio)
       audio.pause()
     })
   })
+}
+
+const barraProgressoFunz = function (aud) {
+  barraProgresso.style.width = `${Math.ceil(
+    (aud.currentTime / aud.duration) * 100
+  )}%`
 }
