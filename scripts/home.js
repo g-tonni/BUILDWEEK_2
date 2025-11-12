@@ -29,7 +29,7 @@ const loadBuonaseraAlbums = function () {
 
 loadBuonaseraAlbums()
 
-const artistID = [412, 13, 2296, 3312, 6050984, 6050984]
+const artistID = [412, 13, 2296, 3312, 6050984, 145]
 
 const loadAltroArtists = function () {
   const cards = document.querySelectorAll('.altro-cards')
