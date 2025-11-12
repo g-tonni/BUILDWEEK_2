@@ -113,10 +113,6 @@ p {
   background-color: black;
 }
 
-#colonnaCentrale {
-  background-color: #c9ad47;
-}
-
 /* INIZIO DIV GIALLO */
 #headerDivGiallo {
   height: 40px;
@@ -210,6 +206,23 @@ table {
 
 #footer-mobile {
   max-width: 95%;
+}
+
+.bottoni-album {
+  background-color: transparent;
+  text-align: left;
+  padding: 0;
+  font-weight: bold;
+}
+
+.bottoni-album,
+.artisti-album {
+  color: rgba(255, 255, 255, 0.787);
+}
+
+.bottoni-album:hover,
+.artisti-album:hover {
+  color: white;
 }
 
 /*!

@@ -1,3 +1,5 @@
+let img
+
 const linkAlbum = 'https://striveschool-api.herokuapp.com/api/deezer/album/'
 
 const url = location.search
@@ -21,6 +23,45 @@ fetch(linkAlbum + id)
 
     for (let i = 0; i < dati.tracks.data.length; i++) {
       crateCanzoni(dati.tracks.data[i], i + 1)
+      console.log(dati.tracks.data[i].preview)
+    }
+
+    let img = document.getElementById('img-details')
+    const canvas = document.getElementById('imgCanvas')
+    const ctx = canvas.getContext('2d')
+
+    img.crossOrigin = 'Anonymous'
+
+    img.onload = function () {
+      canvas.width = img.width
+      canvas.height = img.height
+
+      ctx.drawImage(img, 0, 0)
+
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      const data = imageData.data
+
+      let r = 0,
+        g = 0,
+        b = 0
+      const pixelCount = data.length / 4
+
+      for (let i = 0; i < data.length; i += 4) {
+        r += data[i]
+        g += data[i + 1]
+        b += data[i + 2]
+      }
+
+      const avgR = Math.round(r / pixelCount)
+      const avgG = Math.round(g / pixelCount)
+      const avgB = Math.round(b / pixelCount)
+
+      const averageColor = `rgb(${avgR}, ${avgG}, ${avgB})`
+
+      console.log('Colore medio:', averageColor)
+
+      const col = document.getElementById('colonnaCentrale')
+      col.style.backgroundColor = averageColor
     }
   })
   .catch((err) => {
@@ -34,7 +75,13 @@ const crateCanzoni = function (obj, i) {
     <tr>
       <td class="primaCol pt-4 pb-2">${i}</td>
     <td class="secondaCol pt-4 pb-2">
-    ${obj.title}<br />${obj.artist.name}
+    <button onclick="playAudio('${
+      obj.preview
+    }')" class="border-0 bottoni-album">${
+    obj.title
+  }</button><br /><a href="artist.html?id=${
+    obj.artist.id
+  }" class="fs-7 artisti-album">${obj.artist.name}</a>
     </td>
     <td class="terzaCol pt-4 pb-2">${obj.rank}</td>
     <td class="quartaCol pt-4 pb-2">${
@@ -56,7 +103,7 @@ const primoContenitore = document.getElementById('album')
 const createIntestazione = function (obj) {
   primoContenitore.innerHTML += `
     <div class="col col-12 col-md-4 d-flex flex-column justify-content-end">
-      <img src="${obj.cover_big}" class="img-fluid shadow"/>
+      <img src="${obj.cover_big}" class="img-fluid shadow" id="img-details"/>
     </div>
     <div
     class="col col-12 col-md-8 mt-4 d-flex flex-column justify-content-end"
@@ -74,4 +121,36 @@ const createIntestazione = function (obj) {
     </div>
 
     `
+}
+
+let audio
+
+const playAudio = function (url) {
+  const audioURL = url
+
+  audio = new Audio(audioURL)
+
+  const playButton = document.getElementById('play')
+  const pauseButton = document.getElementById('pause')
+  console.log(playButton)
+  console.log(audio)
+
+  audio.play()
+  pauseButton.classList.remove('d-none')
+  playButton.classList.add('d-none')
+  playButton.innerHTML = ''
+  playButton.appendChild(audio)
+  audio.addEventListener('canplaythrough', (event) => {
+    playButton.addEventListener('click', () => {
+      pauseButton.classList.remove('d-none')
+      playButton.classList.add('d-none')
+      audio.play()
+    })
+    pauseButton.addEventListener('click', () => {
+      pauseButton.classList.add('d-none')
+      playButton.classList.remove('d-none')
+      console.log('AUDIO PAUSA', audio)
+      audio.pause()
+    })
+  })
 }
