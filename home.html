@@ -20,7 +20,9 @@
   <body id="font">
     <div class="container-fluid" id="cont-gen">
       <div class="row">
-        <div class="col col-3 bg-black p-4 min-vh-100">
+        <div
+          class="col col-3 bg-black p-4 min-vh-100 d-none d-md-flex flex-column"
+        >
           <div class="mb-4">
             <ul class="p-0 m-0">
               <li>
@@ -123,7 +125,7 @@
         </div>
         <!-- FINE COLONNA SINISTRA -->
 
-        <div class="col col-7 bg-dark pb-5">
+        <div class="col col-12 col-md-7 bg-dark pb-5">
           <div class="d-flex justify-content-between align-items-center pt-3">
             <div class="d-flex">
               <div
@@ -191,7 +193,8 @@
           <!-- FINE PARTE COMUNE -->
 
           <div
-            class="container-fluid py-4 my-4 bg-dark-light text-white rounded-3" id="prima-parte-home"
+            class="container-fluid py-4 my-4 bg-dark-light text-white rounded-3"
+            id="prima-parte-home"
           >
             <div class="row align-items-center">
               <!-- COPERTINA -->
@@ -408,7 +411,7 @@
 
           <div class="row g-3">
             <!-- CARD 1 -->
-            <div class="col-6 col-md-4 col-lg-3 altro-cards">
+            <div class="col-6 col-md-4 col-lg-3 col-xxl-2 altro-cards">
               <a href=""
                 ><div class="bg-dark-unlight rounded p-2">
                   <img
@@ -425,7 +428,7 @@
             </div>
 
             <!-- CARD 2 -->
-            <div class="col-6 col-md-4 col-lg-3 altro-cards">
+            <div class="col-6 col-md-4 col-lg-3 col-xxl-2 altro-cards">
               <a href=""
                 ><div class="bg-dark-unlight rounded p-2">
                   <img
@@ -440,7 +443,7 @@
             </div>
 
             <!-- CARD 3 -->
-            <div class="col-6 col-md-4 col-lg-3 altro-cards">
+            <div class="col-6 col-md-4 col-lg-3 col-xxl-2 altro-cards">
               <a href=""
                 ><div class="bg-dark-unlight rounded p-2">
                   <img
@@ -457,7 +460,7 @@
             </div>
 
             <!-- CARD 4 -->
-            <div class="col-6 col-md-4 col-lg-3 altro-cards">
+            <div class="col-6 col-md-4 col-lg-3 col-xxl-2 altro-cards">
               <a href=""
                 ><div class="bg-dark-unlight rounded p-2">
                   <img
@@ -474,7 +477,7 @@
             </div>
 
             <!-- CARD 5 -->
-            <div class="col-6 col-md-4 col-lg-3 altro-cards">
+            <div class="col-6 col-md-4 col-lg-3 col-xxl-2 altro-cards">
               <a href=""
                 ><div class="bg-dark-unlight rounded p-2">
                   <img
@@ -492,14 +495,19 @@
           </div>
         </div>
         <!-- FINE COLONNA CENTRALE -->
-        <div class="col col-2 min-vh-100 bg-black p-4">
+
+        <div
+          class="col col-2 min-vh-100 bg-black p-4 d-none d-md-flex flex-column"
+        >
           <div class="d-flex justify-content-end mb-2">
             <a href="#"><i class="bi bi-dash-lg m-0 ms-3 fs-6"></i></a>
             <a href="#"><i class="bi bi-copy m-0 ms-3 fs-6"></i></a>
             <a href="#"><i class="bi bi-x-lg m-0 ms-3 fs-6"></i></a>
           </div>
           <div class="d-flex justify-content-between align-items-center mb-5">
-            <p class="text-light m-0 fw-bold fs-5 text-truncate">Attività amici</p>
+            <p class="text-light m-0 fw-bold fs-5 text-truncate">
+              Attività amici
+            </p>
             <div class="d-flex">
               <a href="#"><i class="bi bi-person-plus fs-4 m-0"></i></a>
               <a href="#"><i class="bi bi-x-lg ms-3 fs-4 m-0"></i></a>
@@ -579,7 +587,7 @@
       </div>
     </div>
     <footer
-      class="bg-dark p-4 position-fixed bottom-0 w-100 d-flex justify-content-between align-items-center border-top border-secondary"
+      class="bg-dark p-4 position-fixed bottom-0 w-100 d-none d-md-flex justify-content-between align-items-center border-top border-secondary"
     >
       <div class="d-flex h-100">
         <div class="overflow-hidden rounded-2 me-3">
@@ -598,7 +606,9 @@
         </div>
       </div>
       <!-- FINE PRIMA PARTE FOOTER -->
-      <div class="d-flex flex-column align-items-center w-50 px-5 justify-content-center">
+      <div
+        class="d-flex flex-column align-items-center w-50 px-5 justify-content-center"
+      >
         <div class="d-flex justify-content-between">
           <a href="#"><i class="bi bi-shuffle m-0 me-3"></i></a>
           <a href="#"><i class="bi bi-skip-start-fill m-0 me-3"></i></a>
