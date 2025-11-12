@@ -176,6 +176,9 @@ const getArtist = function () {
 
 getArtist()
 
+//RIPRODUZIONE DELL'AUDIO
+//Play/Pause
+
 let audio
 const vinile = document.getElementById('img-vinile')
 
@@ -227,4 +230,13 @@ const playAudio = function (url) {
       audio.pause()
     })
   })
+}
+
+//Progress bar
+
+audio
+
+const progressBar = function () {
+    const progBar = document. querySelector('audio')
+    console.log(progressBar)
 }
