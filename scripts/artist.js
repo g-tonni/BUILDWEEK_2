@@ -54,35 +54,111 @@ const getArtist= function (id){
         fans.innerText = dotArr.join('') + ' ascoltatori mensili'
 
 
+        //Recupero una lista di canzoni dell'artista
+
+        const bestOfArtist = artistDetails.tracklist
+        console.log(bestOfArtist)
+        
+        const bestOf = function(url) {
+            fetch(url)
+                .then((res) => {
+                    if(res.ok) {
+                        return res.json()
+                    } else {
+                        throw new Error(res.status)
+                    }
+                })
+                .then((bestSongs) => {
+
+                    //creo la classe Songs
+                    class Song {
+                        constructor(_songName, _albumImage, _nListeners, _songLength){
+                        this.songName = _songName
+                        this.albumImage = _albumImage
+                        this.nListeners = _nListeners
+                        this.songLength = _songLength
+                        }
+                    }
+                    console.log(bestSongs)
+                    
+                for (let i = 0; i < bestSongs.total; i++) {
+                    //Converto la durata in secondi a mm:ss
+                    let duration
+                    if (bestSongs.data[i].duration%60 > 9) {
+                        const seconds = bestSongs.data[i].duration%60
+                        const minutes = Math.ceil(bestSongs.data[i].duration/60)
+                        duration = minutes + ":" + seconds
+                        console.log('DURATA', duration)
+                    } else {
+                        const seconds = bestSongs.data[i].duration%60
+                        const minutes = Math.ceil(bestSongs.data[i].duration/60)
+                        duration = minutes + ":0" + seconds
+                    }
+
+                    const songName = bestSongs.data[i].title
+                    const albumImage = bestSongs.data[i].album.cover_medium
+                    const nListeners = bestSongs.data[i].rank
+                    const songLength = duration
 
 
-        //Inserisco titolo, cover album, visualizzazioni e durata del brano
-            //Recupero la posizione del container
-        const songs = document.querySelector('div.container.mt-4')
-        console.log(songs)
-        const songInfo = document.createElement('div')
-        console.log(songInfo)
-        songInfo.classList.add('row')
-        songInfo.classList.add('align-items-baseline')
-        songInfo.innerHTML = `
-                        <div class="col col-6 pe-0">
-                            <div class="d-flex hstack gap-3 mb-2">
-                              <p class="m-0">1</p>
-                              <img src="https://placehold.co/60x60/545464/FFFFFF/png" alt="" width="50">
-                              <p class="m-0">Ocean Avenue</p>
-                            </div>
-                          </div>
-                          <div class="col col-3">  
-                            <div class="gap-3 mb-2">
-                              <p class="">1249102</p>
-                            </div>
-                          </div>
-                          <div class="col col-3">  
-                            <div class="gap-3 mb-2">
-                              <p class="">3.50</p>
-                            </div>
-                          </div>
-                        `
+                    //SERVONO SOLO PER DEBUG
+                    console.log('TITOLO CANZONE',songName);
+                    console.log('album', albumImage);
+                    console.log('Rank',nListeners);
+                    console.log('Durata',songLength);
+                    
+                    const newSong = new Song(songName, albumImage, nListeners, songLength)
+                    console.log('Nuova canzone', newSong)
+
+                    //Inserisco titolo, cover album, visualizzazioni e durata del brano
+                        //Recupero la posizione del container
+                    const songs = document.querySelector('div.container.mt-4')
+                    console.log(songs)
+                        //Creo un div e gli aggiungo 2 classi
+                    const songInfo = document.createElement('div')
+                    console.log(songInfo)
+                    songInfo.classList.add('row')
+                    songInfo.classList.add('align-items-baseline')
+                    songInfo.innerHTML = `
+                                    <div class="col col-7 pe-0">
+                                        <div class="d-flex hstack gap-3 mb-2">
+                                        <p class="m-0">${i+1}</p>
+                                        <img src="${albumImage}" alt="" width="50">
+                                        <p class="m-0">${songName}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">  
+                                        <div class="gap-3 mb-2">
+                                        <p class="">${nListeners}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col col-2">  
+                                        <div class="gap-3 mb-2">
+                                        <p class="">${songLength}</p>
+                                        </div>
+                                    </div>
+                                    `
+                                    songs.appendChild(songInfo)
+                                }
+                })
+                .catch((err) => {
+                    console.log('Errore recupero del best of', err)
+                })
+        }
+        
+        bestOf(bestOfArtist)
+        
+        // class Song {
+        //     constructor(_songName, _albumImage, _nListeners, _songLength){
+        //     this.songName = _songName
+        //     this.albumImage = _albumImage
+        //     this.nListeners = _nListeners
+        //     this.songLength = _songLength
+        //     }
+        // }
+
+
+
     })
     .catch((err) => {
         console.log('Errore recupero dei dati', err)
