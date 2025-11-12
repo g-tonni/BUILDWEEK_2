@@ -287,4 +287,24 @@ table {
   color: white;
 }
 
+.buonasera-hover {
+  background-color: $dark-light;
+}
+
+.buonasera-hover:hover {
+  background-color: rgba(255, 255, 255, 0.354);
+}
+
+.altro-hover {
+  background-color: $dark-unlight;
+}
+
+.altro-hover:hover {
+  background-color: $dark-light;
+}
+
+.album-elenco-hover:hover {
+  background-color: rgba(255, 255, 255, 0.085);
+}
+
 @import './scss/bootstrap.scss';
