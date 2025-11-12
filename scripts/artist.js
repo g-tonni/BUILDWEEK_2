@@ -91,9 +91,9 @@ const getArtist= function (){
                 for (let i = 0; i < bestSongs.total; i++) {
                     //Converto la durata in secondi a mm:ss
                     let duration
-                    if (bestSongs.data[i].duration%60 > 9) {
-                        const seconds = bestSongs.data[i].duration%60
-                        const minutes = Math.ceil(bestSongs.data[i].duration/60)
+                    if ((bestSongs.data[i].duration)%60 > 9) {
+                        const seconds = (bestSongs.data[i].duration)%60
+                        const minutes = Math.ceil((bestSongs.data[i].duration)/60)
                         duration = minutes + ":" + seconds
                         console.log('DURATA', duration)
                     } else {
@@ -147,6 +147,9 @@ const getArtist= function (){
                                     `
                                     songs.appendChild(songInfo)
                                 }
+
+                                document.querySelector('footer > a:last-of-type')
+                                console.log('CERCO IL FOOTER', footer.querySelector('a'))
                 })
                 .catch((err) => {
                     console.log('Errore recupero del best of', err)
@@ -155,17 +158,6 @@ const getArtist= function (){
         
         bestOf(bestOfArtist)
         
-        // class Song {
-        //     constructor(_songName, _albumImage, _nListeners, _songLength){
-        //     this.songName = _songName
-        //     this.albumImage = _albumImage
-        //     this.nListeners = _nListeners
-        //     this.songLength = _songLength
-        //     }
-        // }
-
-
-
     })
     .catch((err) => {
         console.log('Errore recupero dei dati', err)
