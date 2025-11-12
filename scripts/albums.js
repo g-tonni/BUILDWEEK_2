@@ -72,7 +72,7 @@ const contenitoreCanzoni = document.getElementById('elenco-canzoni')
 const crateCanzoni = function (obj, i) {
   contenitoreCanzoni.innerHTML += `
     
-    <tr>
+    <tr class="album-elenco-hover">
       <td class="primaCol pt-4 pb-2">${i}</td>
     <td class="secondaCol pt-4 pb-2">
     <button onclick="playAudio('${

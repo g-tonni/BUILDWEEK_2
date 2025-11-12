@@ -242,6 +242,26 @@ table {
   color: white;
 }
 
+.buonasera-hover {
+  background-color: #323232;
+}
+
+.buonasera-hover:hover {
+  background-color: rgba(255, 255, 255, 0.354);
+}
+
+.altro-hover {
+  background-color: #171717;
+}
+
+.altro-hover:hover {
+  background-color: #323232;
+}
+
+.album-elenco-hover:hover {
+  background-color: rgba(255, 255, 255, 0.085);
+}
+
 /*!
  * Bootstrap  v5.3.8 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
