@@ -20,7 +20,9 @@
   <body id="font">
     <div class="container-fluid" id="cont-gen">
       <div class="row">
-        <div class="col col-3 bg-black p-4 min-vh-100">
+        <div
+          class="col col-3 bg-black p-4 min-vh-100 d-none d-md-flex flex-column"
+        >
           <div class="mb-4">
             <ul class="p-0 m-0">
               <li>
@@ -123,8 +125,10 @@
         </div>
         <!-- FINE COLONNA SINISTRA -->
 
-        <div class="col col-7 bg-dark p-4 pb-5">
-          <div class="d-flex justify-content-between align-items-center">
+        <div class="col col-12 col-md-7 bg-dark p-4 pb-5">
+          <div
+            class="d-none d-md-flex justify-content-between align-items-center"
+          >
             <div class="d-flex">
               <div
                 class="bg-black bg-opacity-25 text-light rounded-circle text-center d-flex justify-content-center align-items-center p-2 me-3"
@@ -198,7 +202,6 @@
                   id="form-search"
                 >
                   <div class="m-0 d-flex align-items-center w-50">
-                    
                     <input
                       type="text"
                       class="form-control me-3 rounded-pill bg-black border-0"
@@ -242,7 +245,9 @@
         </div>
         <!-- FINE COLONNA CENTRALE -->
 
-        <div class="col col-2 min-vh-100 bg-black p-4">
+        <div
+          class="col col-2 min-vh-100 bg-black p-4 d-none d-md-flex flex-column"
+        >
           <div class="d-flex justify-content-end mb-2">
             <a href="#"><i class="bi bi-dash-lg ms-3 fs-6"></i></a>
             <a href="#"><i class="bi bi-copy ms-3 fs-6"></i></a>
@@ -329,7 +334,7 @@
       </div>
     </div>
     <footer
-      class="bg-dark p-4 position-fixed bottom-0 w-100 d-flex justify-content-between align-items-center border-top border-secondary"
+      class="bg-dark p-4 position-fixed bottom-0 w-100 d-none d-md-flex justify-content-between align-items-center border-top border-secondary"
     >
       <div class="d-flex h-100">
         <div class="overflow-hidden rounded-2 me-3">

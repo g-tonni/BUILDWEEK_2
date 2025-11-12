@@ -6,23 +6,24 @@ const secondaRow = document.getElementById('seconda-row-search')
 const titoloAlbum = document.getElementById('titolo-album')
 const rowAlbum = document.getElementById('row-album')
 
-const albumIDs = [302127, 1262014, 217795, 12047952, 582140742, 249141, 12114242, 14879699, 693008911, 423368, 81457652, 75233]
+const albumIDs = [
+  302127, 1262014, 217795, 12047952, 582140742, 249141, 12114242, 14879699,
+  693008911, 423368, 81457652, 75233,
+]
 
-const createBase = function(id){
-
+const createBase = function (id) {
   fetch(albumURL + id)
-  .then((res) => {
-    if(res.ok){
-      return res.json()
-    } else {
-      throw new Error('ERRORE NELLA RISPOSTA')
-    }
-  })
-  .then((dati) => {
-    console.log(dati)
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw new Error('ERRORE NELLA RISPOSTA')
+      }
+    })
+    .then((dati) => {
+      console.log(dati)
 
-
-  rowBase.innerHTML += `
+      rowBase.innerHTML += `
   
   <div class="col-6 col-md-4 col-lg-3 altro-cards">
     <a href="albums.html?id=${dati.id}"
@@ -40,16 +41,15 @@ const createBase = function(id){
   </div>
   
   `
-  })
-  .catch((err) => {
-    console.log('ERRORE', err)
-  })
+    })
+    .catch((err) => {
+      console.log('ERRORE', err)
+    })
 }
 
-for(let i = 0; i < albumIDs.length; i++){
+for (let i = 0; i < albumIDs.length; i++) {
   createBase(albumIDs[i])
 }
-
 
 const inputSearch = document.getElementById('cerca')
 
@@ -71,7 +71,7 @@ form.addEventListener('submit', (e) => {
     .then((dati) => {
       console.log(dati)
 
-      rowBase.classList.add('d-none') 
+      rowBase.classList.add('d-none')
       secondaRow.classList.remove('d-none')
       titoloAlbum.classList.remove('d-none')
       rowAlbum.classList.remove('d-none')
@@ -139,7 +139,9 @@ const createBrani = function (obj) {
             <div class="mb-3">
             <a href="albums.html?id=${
               obj.album.id
-            }" class="w-75"><p class="m-0 fw-bold text-truncate w-100">${obj.title}</p></a>
+            }" class="w-75"><p class="m-0 fw-bold text-truncate w-100">${
+    obj.title
+  }</p></a>
              <a href="artist.html?id=${
                obj.artist.id
              }" class="text-decoration-none"><p class="m-0">${
