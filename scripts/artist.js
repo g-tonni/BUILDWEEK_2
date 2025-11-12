@@ -9,14 +9,12 @@ const randomArt = function (){
 
 console.log(randomArt())
 
+//Recupero l'id dell'artista dall'URL
 const url = location.search
 console.log(url)
 const allSearchPar = new URLSearchParams(url)
 const id = allSearchPar.get('id').toString()
 console.log('ID', id)
-
-urlArtist = URL + id
-console.log();
 
 //Recupera le informazioni dall'endpoint
 const getArtist= function (){
@@ -129,14 +127,14 @@ const getArtist= function (){
                     songInfo.classList.add('row')
                     songInfo.classList.add('align-items-baseline')
                     songInfo.innerHTML = `
-                                    <div class="col col-7 pe-0">
+                                    <div class="col col-8 pe-0">
                                         <div class="d-flex hstack gap-3 mb-2">
                                         <p class="m-0">${i+1}</p>
                                         <img src="${albumImage}" alt="" width="50">
                                         <p class="m-0">${songName}</p>
                                         </div>
                                     </div>
-                                    <div class="col col-3">  
+                                    <div class="col col-2">  
                                         <div class="gap-3 mb-2">
                                         <p class="">${nListeners}</p>
                                         </div>
