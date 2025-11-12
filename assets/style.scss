@@ -70,12 +70,16 @@
 
 /*  FINE FONT */
 
+$big-s: $font-size-base * 5;
+$big: $font-size-base * 4;
 $h7-font-size: $font-size-base * 0.8;
 $h8-font-size: $font-size-base * 0.6;
 $h9-font-size: $font-size-base * 0.4;
 $h10-font-size: $font-size-base * 0.2;
 
 $new-font-sizes: (
+  'big-s': $big-s,
+  'big': $big,
   7: $h7-font-size,
   8: $h8-font-size,
   9: $h9-font-size,
@@ -147,16 +151,7 @@ p {
   background-color: black;
 }
 
-#colonnaCentrale {
-  background-color: #c9ad47;
-}
-
 /* INIZIO DIV GIALLO */
-#divGiallo {
-  padding: 20px;
-  align-content: start;
-}
-
 #headerDivGiallo {
   height: 40px;
 }
@@ -183,17 +178,8 @@ p {
   width: 100%;
 }
 
-#imgAlbum {
-  width: 220px;
-  height: 220px;
-  margin-top: 20px;
-  margin-right: 20px;
-}
-
 #titoloAlbum {
   color: white;
-  font-size: 70px;
-  margin-bottom: 20px;
 }
 
 #imgYellowBottom {
@@ -282,3 +268,21 @@ table {
 }
 
 @import "./scss/bootstrap.scss";
+.bottoni-album {
+  background-color: transparent;
+  text-align: left;
+  padding: 0;
+  font-weight: bold;
+}
+
+.bottoni-album,
+.artisti-album {
+  color: rgba(255, 255, 255, 0.787);
+}
+
+.bottoni-album:hover,
+.artisti-album:hover {
+  color: white;
+}
+
+@import './scss/bootstrap.scss';

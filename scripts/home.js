@@ -60,4 +60,29 @@ const loadAltroArtists = function () {
   });
 };
 
-loadAltroArtists();
+loadAltroArtists()
+
+const playAudio = function (url) {
+  const audioURL = url
+
+  const audio = new Audio(audioURL)
+
+  const playButton = document.getElementById('play')
+  const pauseButton = document.getElementById('pause')
+  console.log(playButton)
+  console.log(audio)
+
+  playButton.appendChild(audio)
+  audio.addEventListener('canplaythrough', (event) => {
+    playButton.addEventListener('click', () => {
+      pauseButton.classList.remove('d-none')
+      playButton.classList.add('d-none')
+      audio.play()
+    })
+    pauseButton.addEventListener('click', () => {
+      pauseButton.classList.add('d-none')
+      playButton.classList.remove('d-none')
+      audio.pause()
+    })
+  })
+}
