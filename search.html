@@ -198,7 +198,7 @@
                   id="form-search"
                 >
                   <div class="m-0 d-flex align-items-center w-50">
-                    >
+                    
                     <input
                       type="text"
                       class="form-control me-3 rounded-pill bg-black border-0"
@@ -217,7 +217,9 @@
               </div>
             </div>
 
-            <div class="row my-5">
+            <div class="row g-3 mt-4" id="row-base-search"></div>
+
+            <div class="row my-5 d-none" id="seconda-row-search">
               <div class="col col-12 col-md-4">
                 <h3 class="text-light text-truncate">
                   Risultato più rilevante
@@ -234,8 +236,8 @@
               ></div>
             </div>
             <!-- INIZIO RIGA ALBUMS -->
-            <h3 class="text-light">Album</h3>
-            <div class="row g-3" id="row-album"></div>
+            <h3 class="text-light d-none" id="titolo-album">Album</h3>
+            <div class="row g-3 d-none" id="row-album"></div>
           </div>
         </div>
         <!-- FINE COLONNA CENTRALE -->

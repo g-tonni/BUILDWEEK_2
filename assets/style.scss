@@ -93,6 +93,25 @@ $font-sizes: map-merge($font-sizes, $new-font-sizes);
 
 $link-decoration: none;
 
+$new-primary: #20D760;
+$new-dark: #111111;
+$dark-light: #323232;
+$dark-unlight: #171717;
+
+$new-theme-colors: (
+  'primary': $new-primary,
+  'dark': $new-dark,
+  'dark-light': $dark-light,
+  'dark-unlight': $dark-unlight,
+);
+
+$theme-colors: map-merge($theme-colors, $new-theme-colors);
+
+
+#prima-parte-home{
+  box-shadow: inset 200px -150px 300px 50px rgba(0,0,0,1);
+}
+
 ul {
   list-style-type: none;
 }
