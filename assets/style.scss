@@ -78,8 +78,8 @@ $h9-font-size: $font-size-base * 0.4;
 $h10-font-size: $font-size-base * 0.2;
 
 $new-font-sizes: (
-  'big-s': $big-s,
-  'big': $big,
+  "big-s": $big-s,
+  "big": $big,
   7: $h7-font-size,
   8: $h8-font-size,
   9: $h9-font-size,
@@ -283,4 +283,10 @@ table {
   color: white;
 }
 
-@import './scss/bootstrap.scss';
+.nav-disabled {
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+@import "./scss/bootstrap.scss";

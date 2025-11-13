@@ -1,11 +1,46 @@
 const backBtn = document.getElementById("backBtn")
-backBtn.addEventListener("click", () => {
-  window.history.back() // torna alla pagina precedente
+const nextBtn = document.getElementById("nextBtn")
+
+// Funzione per aggiornare lo stato dei pulsanti
+function updateNavButtons() {
+  // Controllo indietro
+  if (navigation.canGoBack) {
+    backBtn.classList.remove("nav-disabled")
+  } else {
+    backBtn.classList.add("nav-disabled")
+  }
+
+  // Controllo avanti
+  if (navigation.canGoForward) {
+    nextBtn.classList.remove("nav-disabled")
+  } else {
+    nextBtn.classList.add("nav-disabled")
+  }
+}
+
+// Aggiorna pulsanti all'avvio
+updateNavButtons()
+
+// Quando avviene una navigazione, ricalcola
+navigation.addEventListener("navigate", () => {
+  // breve delay per far aggiornare lo stato
+  setTimeout(updateNavButtons, 0)
 })
 
-const nextBtn = document.getElementById("nextBtn")
-nextBtn.addEventListener("click", () => {
-  window.history.forward() // va alla pagina successiva nella cronologia
+// Pulsante indietro
+backBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  if (navigation.canGoBack) {
+    navigation.back()
+  }
+})
+
+// Pulsante avanti
+nextBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  if (navigation.canGoForward) {
+    navigation.forward()
+  }
 })
 
 //URL dell'endpoint

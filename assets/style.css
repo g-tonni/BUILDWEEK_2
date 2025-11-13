@@ -238,6 +238,12 @@ table {
   color: white;
 }
 
+.nav-disabled {
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
 /*!
  * Bootstrap  v5.3.8 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
