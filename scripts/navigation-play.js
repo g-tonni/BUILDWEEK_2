@@ -1,20 +1,20 @@
-const backBtn = document.getElementById("backBtn")
-const nextBtn = document.getElementById("nextBtn")
+const backBtn = document.getElementById('backBtn')
+const nextBtn = document.getElementById('nextBtn')
 
 // Funzione per aggiornare lo stato dei pulsanti
 const updateNavButtons = function () {
   // Controllo indietro
   if (navigation.canGoBack) {
-    backBtn.classList.remove("nav-disabled")
+    backBtn.classList.remove('nav-disabled')
   } else {
-    backBtn.classList.add("nav-disabled")
+    backBtn.classList.add('nav-disabled')
   }
 
   // Controllo avanti
   if (navigation.canGoForward) {
-    nextBtn.classList.remove("nav-disabled")
+    nextBtn.classList.remove('nav-disabled')
   } else {
-    nextBtn.classList.add("nav-disabled")
+    nextBtn.classList.add('nav-disabled')
   }
 }
 
@@ -22,13 +22,13 @@ const updateNavButtons = function () {
 updateNavButtons()
 
 // Quando avviene una navigazione, ricalcola
-navigation.addEventListener("navigate", () => {
+navigation.addEventListener('navigate', () => {
   // breve delay per far aggiornare lo stato
   setTimeout(updateNavButtons, 0)
 })
 
 // Pulsante indietro
-backBtn.addEventListener("click", (e) => {
+backBtn.addEventListener('click', (e) => {
   e.preventDefault()
   if (navigation.canGoBack) {
     navigation.back()
@@ -36,27 +36,27 @@ backBtn.addEventListener("click", (e) => {
 })
 
 // Pulsante avanti
-nextBtn.addEventListener("click", (e) => {
+nextBtn.addEventListener('click', (e) => {
   e.preventDefault()
   if (navigation.canGoForward) {
     navigation.forward()
   }
 })
 
-let keyURL = "urlAudio"
-let keyCurrenTime = "currentTimeAudio"
-let keyTimeDuration = "durationAudio"
-let keyImg = "imgAudio"
-let keyTitle = "titleAudio"
-let keyArtist = "artistAudio"
+let keyURL = 'urlAudio'
+let keyCurrenTime = 'currentTimeAudio'
+let keyTimeDuration = 'durationAudio'
+let keyImg = 'imgAudio'
+let keyTitle = 'titleAudio'
+let keyArtist = 'artistAudio'
 
 /* console.log('URL AUDIO', localStorage.getItem(keyURL))
 console.log('URL AUDIO', localStorage.getItem(keyArtist)) */
 
-const nomeCanz = document.getElementById("footerSongName")
-const nomeArtist = document.getElementById("footerArtistName")
-const albumImg = document.getElementById("footer-album-desktop")
-const nomeCanzMobile = document.getElementById("footer-title-mobile")
+const nomeCanz = document.getElementById('footerSongName')
+const nomeArtist = document.getElementById('footerArtistName')
+const albumImg = document.getElementById('footer-album-desktop')
+const nomeCanzMobile = document.getElementById('footer-title-mobile')
 
 nomeCanz.innerText = localStorage.getItem(keyTitle)
 nomeArtist.innerText = localStorage.getItem(keyArtist)
@@ -65,8 +65,8 @@ nomeCanzMobile.innerText = localStorage.getItem(keyTitle)
 
 let audio
 
-const barraProgresso = document.getElementById("barra-progresso")
-const vinile = document.getElementById("img-vinile")
+const barraProgresso = document.getElementById('barra-progresso')
+const vinile = document.getElementById('img-vinile')
 
 const playAudio = function (url, artist, img, title) {
   const audioURL = url
@@ -74,14 +74,14 @@ const playAudio = function (url, artist, img, title) {
   nomeCanz.innerText = title //Sostituisce il nome della canzone
   nomeArtist.innerText = artist //Sostituisce il nome artista
   albumImg.src = img //Sostituisce l'immagine dell'album
-  nomeCanzMobile.innerText = title + " by " + artist
+  nomeCanzMobile.innerText = title + ' by ' + artist
 
   audio = new Audio(audioURL)
 
-  const playButton = document.getElementById("play-album")
-  const pauseButton = document.getElementById("pause-album")
-  const playButtonMobile = document.getElementById("play-mobile")
-  const pauseButtonMobile = document.getElementById("pause-mobile")
+  const playButton = document.getElementById('play-album')
+  const pauseButton = document.getElementById('pause-album')
+  const playButtonMobile = document.getElementById('play-mobile')
+  const pauseButtonMobile = document.getElementById('pause-mobile')
   // console.log(playButton)
   // console.log(audio)
 
@@ -94,51 +94,50 @@ const playAudio = function (url, artist, img, title) {
 
   console.log(audio.currentTime)
 
-  vinile.classList.add("vinile")
+  vinile.classList.add('vinile')
 
-  pauseButton.classList.remove("d-none")
-  playButton.classList.add("d-none")
-  pauseButtonMobile.classList.remove("d-none")
-  playButtonMobile.classList.add("d-none")
-  playButton.innerHTML = ""
+  pauseButton.classList.remove('d-none')
+  playButton.classList.add('d-none')
+  pauseButtonMobile.classList.remove('d-none')
+  playButtonMobile.classList.add('d-none')
+  playButton.innerHTML = ''
   playButton.appendChild(audio)
 
-  audio.addEventListener("canplaythrough", (event) => {
+  audio.addEventListener('canplaythrough', (event) => {
     localStorage.setItem(keyTimeDuration, audio.duration)
     /* console.log('DURATA', audio.duration)
      */
-    barraProgresso.style.width = localStorage.getItem(keyCurrenTime)
 
     audio.ontimeupdate = function () {
       barraProgressoFunz(audio)
     }
 
-    playButton.addEventListener("click", () => {
-      pauseButton.classList.remove("d-none")
-      playButton.classList.add("d-none")
+    playButton.addEventListener('click', () => {
+      pauseButton.classList.remove('d-none')
+      playButton.classList.add('d-none')
       audio.play()
     })
-    pauseButton.addEventListener("click", () => {
-      pauseButton.classList.add("d-none")
-      playButton.classList.remove("d-none")
+    pauseButton.addEventListener('click', () => {
+      pauseButton.classList.add('d-none')
+      playButton.classList.remove('d-none')
       console.log(
-        "PERCENTUALE",
+        'PERCENTUALE',
         Math.ceil((audio.currentTime / audio.duration) * 100)
       )
       // console.log('AUDIO PAUSA', audio)
       audio.pause()
       console.log(audio.currentTime)
     })
-    playButtonMobile.addEventListener("click", () => {
-      vinile.classList.add("vinile")
-      pauseButtonMobile.classList.remove("d-none")
-      playButtonMobile.classList.add("d-none")
+    playButtonMobile.addEventListener('click', () => {
+      vinile.classList.add('vinile')
+      pauseButtonMobile.classList.remove('d-none')
+      playButtonMobile.classList.add('d-none')
       audio.play()
     })
-    pauseButtonMobile.addEventListener("click", () => {
-      vinile.classList.remove("vinile")
-      pauseButtonMobile.classList.add("d-none")
-      playButtonMobile.classList.remove("d-none")
+    pauseButtonMobile.addEventListener('click', () => {
+      vinile.classList.remove('vinile')
+      pauseButtonMobile.classList.add('d-none')
+      playButtonMobile.classList.remove('d-none')
       // console.log('AUDIO PAUSA', audio)
       audio.pause()
     })
@@ -152,9 +151,9 @@ const barraProgressoFunz = function (aud) {
 
   localStorage.setItem(keyCurrenTime, aud.currentTime)
 
-  const elapsedTime = document.querySelector("footer>div:nth-of-type(2) p.m-0")
+  const elapsedTime = document.querySelector('footer>div:nth-of-type(2) p.m-0')
   elapsedSec = Math.floor(aud.currentTime % 60)
   elapsedTime.innerText =
-    elapsedSec > 9 ? "0:" + elapsedSec : "0:0" + elapsedSec
+    elapsedSec > 9 ? '0:' + elapsedSec : '0:0' + elapsedSec
   // console.log('TEMPO TRASCORSO', elapsedTime.innerText)
 }
