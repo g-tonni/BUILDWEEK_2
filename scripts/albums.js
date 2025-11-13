@@ -1,56 +1,11 @@
-const backBtn = document.getElementById("backBtn")
-const nextBtn = document.getElementById("nextBtn")
-
-// Funzione per aggiornare lo stato dei pulsanti
-const updateNavButtons = function () {
-  // Controllo indietro
-  if (navigation.canGoBack) {
-    backBtn.classList.remove("nav-disabled")
-  } else {
-    backBtn.classList.add("nav-disabled")
-  }
-
-  // Controllo avanti
-  if (navigation.canGoForward) {
-    nextBtn.classList.remove("nav-disabled")
-  } else {
-    nextBtn.classList.add("nav-disabled")
-  }
-}
-
-// Aggiorna pulsanti all'avvio
-updateNavButtons()
-
-// Quando avviene una navigazione, ricalcola
-navigation.addEventListener("navigate", () => {
-  // breve delay per far aggiornare lo stato
-  setTimeout(updateNavButtons, 0)
-})
-
-// Pulsante indietro
-backBtn.addEventListener("click", (e) => {
-  e.preventDefault()
-  if (navigation.canGoBack) {
-    navigation.back()
-  }
-})
-
-// Pulsante avanti
-nextBtn.addEventListener("click", (e) => {
-  e.preventDefault()
-  if (navigation.canGoForward) {
-    navigation.forward()
-  }
-})
-
 let img
 
-const linkAlbum = "https://striveschool-api.herokuapp.com/api/deezer/album/"
+const linkAlbum = 'https://striveschool-api.herokuapp.com/api/deezer/album/'
 
 const url = location.search
 // console.log(url)
 const allTheParameters = new URLSearchParams(url)
-const id = allTheParameters.get("id")
+const id = allTheParameters.get('id')
 // console.log('ID', id)
 
 fetch(linkAlbum + id)
@@ -58,7 +13,7 @@ fetch(linkAlbum + id)
     if (res.ok) {
       return res.json()
     } else {
-      throw new Error("ERRORE NELLA RISPOSTA")
+      throw new Error('ERRORE NELLA RISPOSTA')
     }
   })
   .then((dati) => {
@@ -71,11 +26,11 @@ fetch(linkAlbum + id)
       // console.log(dati.tracks.data[i].preview)
     }
 
-    let img = document.getElementById("img-details")
-    const canvas = document.getElementById("imgCanvas")
-    const ctx = canvas.getContext("2d")
+    let img = document.getElementById('img-details')
+    const canvas = document.getElementById('imgCanvas')
+    const ctx = canvas.getContext('2d')
 
-    img.crossOrigin = "Anonymous"
+    img.crossOrigin = 'Anonymous'
 
     img.onload = function () {
       canvas.width = img.width
@@ -105,15 +60,15 @@ fetch(linkAlbum + id)
 
       // console.log('Colore medio:', averageColor)
 
-      const col = document.getElementById("colonnaCentrale")
+      const col = document.getElementById('colonnaCentrale')
       col.style.backgroundColor = averageColor
     }
   })
   .catch((err) => {
-    console.log("ERRORE", err)
+    console.log('ERRORE', err)
   })
 
-const contenitoreCanzoni = document.getElementById("elenco-canzoni")
+const contenitoreCanzoni = document.getElementById('elenco-canzoni')
 const crateCanzoni = function (obj, i) {
   contenitoreCanzoni.innerHTML += `
     
@@ -138,13 +93,13 @@ const crateCanzoni = function (obj, i) {
 
 const num = function (num) {
   if (num < 10) {
-    return "0" + num
+    return '0' + num
   } else {
     return num
   }
 }
 
-const primoContenitore = document.getElementById("album")
+const primoContenitore = document.getElementById('album')
 const createIntestazione = function (obj) {
   primoContenitore.innerHTML += `
     <div class="col col-12 col-md-4 d-flex flex-column justify-content-end">

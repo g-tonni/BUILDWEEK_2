@@ -1,9 +1,67 @@
+const backBtn = document.getElementById('backBtn')
+const nextBtn = document.getElementById('nextBtn')
+
+// Funzione per aggiornare lo stato dei pulsanti
+function updateNavButtons() {
+  // Controllo indietro
+  if (navigation.canGoBack) {
+    backBtn.classList.remove('nav-disabled')
+  } else {
+    backBtn.classList.add('nav-disabled')
+  }
+
+  // Controllo avanti
+  if (navigation.canGoForward) {
+    nextBtn.classList.remove('nav-disabled')
+  } else {
+    nextBtn.classList.add('nav-disabled')
+  }
+}
+
+// Aggiorna pulsanti all'avvio
+updateNavButtons()
+
+// Quando avviene una navigazione, ricalcola
+navigation.addEventListener('navigate', () => {
+  // breve delay per far aggiornare lo stato
+  setTimeout(updateNavButtons, 0)
+})
+
+// Pulsante indietro
+backBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  if (navigation.canGoBack) {
+    navigation.back()
+  }
+})
+
+// Pulsante avanti
+nextBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  if (navigation.canGoForward) {
+    navigation.forward()
+  }
+})
+
 let keyURL = 'urlAudio'
 let keyCurrenTime = 'currentTimeAudio'
 let keyTimeDuration = 'durationAudio'
 let keyImg = 'imgAudio'
 let keyTitle = 'titleAudio'
 let keyArtist = 'artistAudio'
+
+/* console.log('URL AUDIO', localStorage.getItem(keyURL))
+console.log('URL AUDIO', localStorage.getItem(keyArtist)) */
+
+const nomeCanz = document.getElementById('footerSongName')
+const nomeArtist = document.getElementById('footerArtistName')
+const albumImg = document.getElementById('footer-album-desktop')
+const nomeCanzMobile = document.getElementById('footer-title-mobile')
+
+nomeCanz.innerText = localStorage.getItem(keyTitle)
+nomeArtist.innerText = localStorage.getItem(keyArtist)
+albumImg.src = localStorage.getItem(keyImg)
+nomeCanzMobile.innerText = localStorage.getItem(keyTitle)
 
 let audio
 
@@ -13,11 +71,10 @@ const vinile = document.getElementById('img-vinile')
 const playAudio = function (url, artist, img, title) {
   const audioURL = url
 
-  document.getElementById('footerSongName').innerText = title //Sostituisce il nome della canzone
-  document.getElementById('footerArtistName').innerText = artist //Sostituisce il nome artista
-  document.getElementById('footer-album-desktop').src = img //Sostituisce l'immagine dell'album
-  document.getElementById('footer-title-mobile').innerText =
-    title + ' by ' + artist
+  nomeCanz.innerText = title //Sostituisce il nome della canzone
+  nomeArtist.innerText = artist //Sostituisce il nome artista
+  albumImg.src = img //Sostituisce l'immagine dell'album
+  nomeCanzMobile.innerText = title + ' by ' + artist
 
   audio = new Audio(audioURL)
 
@@ -50,6 +107,8 @@ const playAudio = function (url, artist, img, title) {
     localStorage.setItem(keyTimeDuration, audio.duration)
     /* console.log('DURATA', audio.duration)
      */
+    barraProgresso.style.width = localStorage.getItem(keyCurrenTime)
+
     audio.ontimeupdate = function () {
       barraProgressoFunz(audio)
     }

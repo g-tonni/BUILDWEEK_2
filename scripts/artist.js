@@ -1,50 +1,5 @@
-const backBtn = document.getElementById("backBtn")
-const nextBtn = document.getElementById("nextBtn")
-
-// Funzione per aggiornare lo stato dei pulsanti
-function updateNavButtons() {
-  // Controllo indietro
-  if (navigation.canGoBack) {
-    backBtn.classList.remove("nav-disabled")
-  } else {
-    backBtn.classList.add("nav-disabled")
-  }
-
-  // Controllo avanti
-  if (navigation.canGoForward) {
-    nextBtn.classList.remove("nav-disabled")
-  } else {
-    nextBtn.classList.add("nav-disabled")
-  }
-}
-
-// Aggiorna pulsanti all'avvio
-updateNavButtons()
-
-// Quando avviene una navigazione, ricalcola
-navigation.addEventListener("navigate", () => {
-  // breve delay per far aggiornare lo stato
-  setTimeout(updateNavButtons, 0)
-})
-
-// Pulsante indietro
-backBtn.addEventListener("click", (e) => {
-  e.preventDefault()
-  if (navigation.canGoBack) {
-    navigation.back()
-  }
-})
-
-// Pulsante avanti
-nextBtn.addEventListener("click", (e) => {
-  e.preventDefault()
-  if (navigation.canGoForward) {
-    navigation.forward()
-  }
-})
-
 //URL dell'endpoint
-const URL = "https://striveschool-api.herokuapp.com/api/deezer/artist/"
+const URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/'
 
 //cerco un artista a CASO
 const randomArt = function () {
@@ -58,7 +13,7 @@ const randomArt = function () {
 const url = location.search
 // console.log(url)
 const allSearchPar = new URLSearchParams(url)
-const id = allSearchPar.get("id").toString()
+const id = allSearchPar.get('id').toString()
 // console.log('ID', id)
 
 //Recupera le informazioni dall'endpoint
@@ -74,25 +29,25 @@ const getArtist = function () {
     .then((artistDetails) => {
       // console.log('Dettagli artista|', artistDetails)
       //Sostituisce l'immagine nell'header con quella dell'artista
-      const topRow = (document.getElementById("artist-img").src =
+      const topRow = (document.getElementById('artist-img').src =
         artistDetails.picture_xl)
-      const likedSongs = (document.querySelector("img.rounded-circle").src =
+      const likedSongs = (document.querySelector('img.rounded-circle').src =
         artistDetails.picture_medium)
 
-      const likes = document.querySelector("div.col > p:last-of-type")
+      const likes = document.querySelector('div.col > p:last-of-type')
       likes.innerText += ` ${artistDetails.name}`
 
       //Sostituisco il nome dell'artista nell'elemento partendo da id='headers'
-      const artist = document.querySelector("h2")
+      const artist = document.querySelector('h2')
       artist.innerText = artistDetails.name
       // console.log('NOME ARTISTA', (artist.innerText = artistDetails.name))
 
       //Sostituisco il numero dei fan nell'elemento partendo da id='headers'
-      const fans = header.querySelector("p")
+      const fans = header.querySelector('p')
 
       //Inserisco nel HTML
       fans.innerText =
-        artistDetails.nb_fan.toLocaleString("it-IT") + " ascoltatori mensili"
+        artistDetails.nb_fan.toLocaleString('it-IT') + ' ascoltatori mensili'
 
       //Recupero una lista di canzoni dell'artista
 
@@ -127,7 +82,7 @@ const getArtist = function () {
                 this.artist = _artist
               }
             }
-            console.log("SONG", bestSongs)
+            console.log('SONG', bestSongs)
 
             for (let i = 0; i < bestSongs.total; i++) {
               //Converto la durata in secondi a mm:ss
@@ -135,17 +90,17 @@ const getArtist = function () {
               if (bestSongs.data[i].duration % 60 > 9) {
                 const seconds = bestSongs.data[i].duration % 60
                 const minutes = Math.ceil(bestSongs.data[i].duration / 60)
-                duration = minutes + ":" + seconds
+                duration = minutes + ':' + seconds
                 // console.log('DURATA', duration)
               } else {
                 const seconds = bestSongs.data[i].duration % 60
                 const minutes = Math.ceil(bestSongs.data[i].duration / 60)
-                duration = minutes + ":0" + seconds
+                duration = minutes + ':0' + seconds
               }
 
               const songName = bestSongs.data[i].title
               const albumImage = bestSongs.data[i].album.cover_medium
-              const nListeners = bestSongs.data[i].rank.toLocaleString("it-IT")
+              const nListeners = bestSongs.data[i].rank.toLocaleString('it-IT')
               const preview = bestSongs.data[i].preview
               const artist = bestSongs.data[i].artist.name
               const songLength = duration
@@ -166,13 +121,13 @@ const getArtist = function () {
 
               //Inserisco titolo, cover album, visualizzazioni e durata del brano
               //Recupero la posizione del container
-              const songs = document.querySelector("div.container.mt-4")
+              const songs = document.querySelector('div.container.mt-4')
               // console.log(songs)
               //Creo un div e gli aggiungo 2 classi
-              const songInfo = document.createElement("div")
+              const songInfo = document.createElement('div')
               // console.log(songInfo)
-              songInfo.classList.add("row")
-              songInfo.classList.add("align-items-baseline")
+              songInfo.classList.add('row')
+              songInfo.classList.add('align-items-baseline')
               songInfo.innerHTML = `
                     <div class="col col-8 pe-0">
                         <div class="d-flex hstack gap-3 mb-2">
@@ -195,18 +150,18 @@ const getArtist = function () {
               songs.appendChild(songInfo)
             }
 
-            document.querySelector("footer > a:last-of-type")
+            document.querySelector('footer > a:last-of-type')
             //console.log('CERCO IL FOOTER', footer.querySelector('a'))
           })
           .catch((err) => {
-            console.log("Errore recupero del best of", err)
+            console.log('Errore recupero del best of', err)
           })
       }
 
       bestOf(bestOfArtist)
     })
     .catch((err) => {
-      console.log("Errore recupero dei dati", err)
+      console.log('Errore recupero dei dati', err)
     })
 }
 

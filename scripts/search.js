@@ -1,55 +1,10 @@
-const backBtn = document.getElementById("backBtn")
-const nextBtn = document.getElementById("nextBtn")
+const searchURL = 'https://striveschool-api.herokuapp.com/api/deezer/search?q='
+const albumURL = 'https://striveschool-api.herokuapp.com/api/deezer/album/'
 
-// Funzione per aggiornare lo stato dei pulsanti
-function updateNavButtons() {
-  // Controllo indietro
-  if (navigation.canGoBack) {
-    backBtn.classList.remove("nav-disabled")
-  } else {
-    backBtn.classList.add("nav-disabled")
-  }
-
-  // Controllo avanti
-  if (navigation.canGoForward) {
-    nextBtn.classList.remove("nav-disabled")
-  } else {
-    nextBtn.classList.add("nav-disabled")
-  }
-}
-
-// Aggiorna pulsanti all'avvio
-updateNavButtons()
-
-// Quando avviene una navigazione, ricalcola
-navigation.addEventListener("navigate", () => {
-  // breve delay per far aggiornare lo stato
-  setTimeout(updateNavButtons, 0)
-})
-
-// Pulsante indietro
-backBtn.addEventListener("click", (e) => {
-  e.preventDefault()
-  if (navigation.canGoBack) {
-    navigation.back()
-  }
-})
-
-// Pulsante avanti
-nextBtn.addEventListener("click", (e) => {
-  e.preventDefault()
-  if (navigation.canGoForward) {
-    navigation.forward()
-  }
-})
-
-const searchURL = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
-const albumURL = "https://striveschool-api.herokuapp.com/api/deezer/album/"
-
-const rowBase = document.getElementById("row-base-search")
-const secondaRow = document.getElementById("seconda-row-search")
-const titoloAlbum = document.getElementById("titolo-album")
-const rowAlbum = document.getElementById("row-album")
+const rowBase = document.getElementById('row-base-search')
+const secondaRow = document.getElementById('seconda-row-search')
+const titoloAlbum = document.getElementById('titolo-album')
+const rowAlbum = document.getElementById('row-album')
 
 const albumIDs = [
   302127, 1262014, 217795, 12047952, 582140742, 249141, 12114242, 14879699,
@@ -62,7 +17,7 @@ const createBase = function (id) {
       if (res.ok) {
         return res.json()
       } else {
-        throw new Error("ERRORE NELLA RISPOSTA")
+        throw new Error('ERRORE NELLA RISPOSTA')
       }
     })
     .then((dati) => {
@@ -88,7 +43,7 @@ const createBase = function (id) {
   `
     })
     .catch((err) => {
-      console.log("ERRORE", err)
+      console.log('ERRORE', err)
     })
 }
 
@@ -96,10 +51,10 @@ for (let i = 0; i < albumIDs.length; i++) {
   createBase(albumIDs[i])
 }
 
-const inputSearch = document.getElementById("cerca")
+const inputSearch = document.getElementById('cerca')
 
-const form = document.getElementById("form-search")
-form.addEventListener("submit", (e) => {
+const form = document.getElementById('form-search')
+form.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const ricerca = inputSearch.value
@@ -110,16 +65,16 @@ form.addEventListener("submit", (e) => {
       if (res.ok) {
         return res.json()
       } else {
-        throw new Error("ERRORE NELLA RISPOSTA")
+        throw new Error('ERRORE NELLA RISPOSTA')
       }
     })
     .then((dati) => {
       console.log(dati)
 
-      rowBase.classList.add("d-none")
-      secondaRow.classList.remove("d-none")
-      titoloAlbum.classList.remove("d-none")
-      rowAlbum.classList.remove("d-none")
+      rowBase.classList.add('d-none')
+      secondaRow.classList.remove('d-none')
+      titoloAlbum.classList.remove('d-none')
+      rowAlbum.classList.remove('d-none')
 
       // console.log(dati.data[0].album)
       createPrimaCanz(dati)
@@ -135,21 +90,21 @@ form.addEventListener("submit", (e) => {
           dati.data.map((item) => [item.album.id, item.album])
         ).values(),
       ]
-      console.log("ALBUM FILTRATI", albumFiltrati)
+      console.log('ALBUM FILTRATI', albumFiltrati)
 
       createAlbum(albumFiltrati)
     })
     .catch((err) => {
-      console.log("ERRORE", err)
+      console.log('ERRORE', err)
     })
 
   form.reset()
 })
 
-const contenitorePrimaCanz = document.getElementById("prima-canzone")
+const contenitorePrimaCanz = document.getElementById('prima-canzone')
 
 const createPrimaCanz = function (obj) {
-  contenitorePrimaCanz.innerHTML = ""
+  contenitorePrimaCanz.innerHTML = ''
   contenitorePrimaCanz.innerHTML += `
     <a href="albums.html?id=${obj.data[0].album.id}">
   <img
@@ -162,7 +117,7 @@ const createPrimaCanz = function (obj) {
     <a href="artist.html?id=${obj.data[0].artist.id}" class="text-decoration-none"><p class="m-0">${obj.data[0].artist.name}</p></a>`
 }
 
-const contenitoreBrani = document.getElementById("contenitore-brani")
+const contenitoreBrani = document.getElementById('contenitore-brani')
 
 const createBrani = function (obj) {
   contenitoreBrani.innerHTML += `   
@@ -205,15 +160,15 @@ const createBrani = function (obj) {
 
 const num = function (num) {
   if (num < 10) {
-    return "0" + num
+    return '0' + num
   } else {
     return num
   }
 }
 
-const album = document.getElementById("row-album")
+const album = document.getElementById('row-album')
 const createAlbum = function (obj) {
-  album.innerHTML = ""
+  album.innerHTML = ''
   for (let i = 0; i < obj.length; i++) {
     album.innerHTML += `
     <div class="col col-12 col-md-4 col-lg-2">
