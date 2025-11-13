@@ -1,20 +1,20 @@
-const backBtn = document.getElementById("backBtn")
-const nextBtn = document.getElementById("nextBtn")
+const backBtn = document.getElementById('backBtn')
+const nextBtn = document.getElementById('nextBtn')
 
 // Funzione per aggiornare lo stato dei pulsanti
 const updateNavButtons = function () {
   // Controllo indietro
   if (navigation.canGoBack) {
-    backBtn.classList.remove("nav-disabled")
+    backBtn.classList.remove('nav-disabled')
   } else {
-    backBtn.classList.add("nav-disabled")
+    backBtn.classList.add('nav-disabled')
   }
 
   // Controllo avanti
   if (navigation.canGoForward) {
-    nextBtn.classList.remove("nav-disabled")
+    nextBtn.classList.remove('nav-disabled')
   } else {
-    nextBtn.classList.add("nav-disabled")
+    nextBtn.classList.add('nav-disabled')
   }
 }
 
@@ -22,13 +22,13 @@ const updateNavButtons = function () {
 updateNavButtons()
 
 // Quando avviene una navigazione, ricalcola
-navigation.addEventListener("navigate", () => {
+navigation.addEventListener('navigate', () => {
   // breve delay per far aggiornare lo stato
   setTimeout(updateNavButtons, 0)
 })
 
 // Pulsante indietro
-backBtn.addEventListener("click", (e) => {
+backBtn.addEventListener('click', (e) => {
   e.preventDefault()
   if (navigation.canGoBack) {
     navigation.back()
@@ -36,7 +36,7 @@ backBtn.addEventListener("click", (e) => {
 })
 
 // Pulsante avanti
-nextBtn.addEventListener("click", (e) => {
+nextBtn.addEventListener('click', (e) => {
   e.preventDefault()
   if (navigation.canGoForward) {
     navigation.forward()
@@ -44,55 +44,55 @@ nextBtn.addEventListener("click", (e) => {
 })
 
 const syncPlayButtons = function (isPlaying) {
-  const playButton = document.getElementById("play-album")
-  const pauseButton = document.getElementById("pause-album")
-  const playButtonMobile = document.getElementById("play-mobile")
-  const pauseButtonMobile = document.getElementById("pause-mobile")
+  const playButton = document.getElementById('play-album')
+  const pauseButton = document.getElementById('pause-album')
+  const playButtonMobile = document.getElementById('play-mobile')
+  const pauseButtonMobile = document.getElementById('pause-mobile')
 
   if (isPlaying) {
     // Mostra PAUSE
-    pauseButton.classList.remove("d-none")
-    playButton.classList.add("d-none")
+    pauseButton.classList.remove('d-none')
+    playButton.classList.add('d-none')
 
-    pauseButtonMobile.classList.remove("d-none")
-    playButtonMobile.classList.add("d-none")
+    pauseButtonMobile.classList.remove('d-none')
+    playButtonMobile.classList.add('d-none')
 
-    vinile.classList.add("vinile")
+    vinile.classList.add('vinile')
   } else {
     // Mostra PLAY
-    pauseButton.classList.add("d-none")
-    playButton.classList.remove("d-none")
+    pauseButton.classList.add('d-none')
+    playButton.classList.remove('d-none')
 
-    pauseButtonMobile.classList.add("d-none")
-    playButtonMobile.classList.remove("d-none")
+    pauseButtonMobile.classList.add('d-none')
+    playButtonMobile.classList.remove('d-none')
 
-    vinile.classList.remove("vinile")
+    vinile.classList.remove('vinile')
   }
 }
 
 const stopPreviousAudio = function () {
   if (audio) {
     audio.pause()
-    audio.src = "" // scollega la sorgente
+    audio.src = '' // scollega la sorgente
     audio = null // rimuovi riferimento
   }
 }
 
-let keyURL = "urlAudio"
-let keyCurrenTime = "currentTimeAudio"
-let keyTimeDuration = "durationAudio"
-let keyImg = "imgAudio"
-let keyTitle = "titleAudio"
-let keyArtist = "artistAudio"
-let keyPlay = "playAudio"
+let keyURL = 'urlAudio'
+let keyCurrenTime = 'currentTimeAudio'
+let keyTimeDuration = 'durationAudio'
+let keyImg = 'imgAudio'
+let keyTitle = 'titleAudio'
+let keyArtist = 'artistAudio'
+let keyPlay = 'playAudio'
 
 /* console.log('URL AUDIO', localStorage.getItem(keyURL))
 console.log('URL AUDIO', localStorage.getItem(keyArtist)) */
 
-const nomeCanz = document.getElementById("footerSongName")
-const nomeArtist = document.getElementById("footerArtistName")
-const albumImg = document.getElementById("footer-album-desktop")
-const nomeCanzMobile = document.getElementById("footer-title-mobile")
+const nomeCanz = document.getElementById('footerSongName')
+const nomeArtist = document.getElementById('footerArtistName')
+const albumImg = document.getElementById('footer-album-desktop')
+const nomeCanzMobile = document.getElementById('footer-title-mobile')
 
 nomeCanz.innerText = localStorage.getItem(keyTitle)
 nomeArtist.innerText = localStorage.getItem(keyArtist)
@@ -101,17 +101,17 @@ nomeCanzMobile.innerText = localStorage.getItem(keyTitle)
 
 let audio
 
-const barraProgresso = document.getElementById("barra-progresso")
-const vinile = document.getElementById("img-vinile")
-let playButton = document.getElementById("play-album")
-let pauseButton = document.getElementById("pause-album")
-let playButtonMobile = document.getElementById("play-mobile")
-let pauseButtonMobile = document.getElementById("pause-mobile")
+const barraProgresso = document.getElementById('barra-progresso')
+const vinile = document.getElementById('img-vinile')
+let playButton = document.getElementById('play-album')
+let pauseButton = document.getElementById('pause-album')
+let playButtonMobile = document.getElementById('play-mobile')
+let pauseButtonMobile = document.getElementById('pause-mobile')
 
 // -----------------------------
 // RIPRISTINO AUDIO SALVATO
 // -----------------------------
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   stopPreviousAudio()
 
   const savedURL = localStorage.getItem(keyURL)
@@ -121,35 +121,56 @@ window.addEventListener("load", () => {
     // Crea il nuovo audio
     audio = new Audio(savedURL)
 
-    audio.addEventListener("canplay", () => {
+    audio.addEventListener('canplay', () => {
       // Riposiziona al punto esatto
       if (savedTime) {
         audio.currentTime = savedTime
       }
+      playButton.appendChild(audio)
 
-      // Fai partire la riproduzione
       audio.play()
 
+      // Fai partire la riproduzione
+
       // Ripristina rotazione vinile
-      vinile.classList.add("vinile")
+      vinile.classList.add('vinile')
 
       // Ripristina pulsanti corretti
-      document.getElementById("pause-album").classList.remove("d-none")
-      document.getElementById("play-album").classList.add("d-none")
-      document.getElementById("pause-mobile").classList.remove("d-none")
-      document.getElementById("play-mobile").classList.add("d-none")
+      document.getElementById('pause-album').classList.remove('d-none')
+      document.getElementById('play-album').classList.add('d-none')
+      document.getElementById('pause-mobile').classList.remove('d-none')
+      document.getElementById('play-mobile').classList.add('d-none')
 
-      if (localStorage.getItem(keyPlay) === "true") {
-        pauseButton.classList.remove("d-none")
-        playButton.classList.add("d-none")
-        pauseButtonMobile.classList.remove("d-none")
-        playButtonMobile.classList.add("d-none")
+      if (localStorage.getItem(keyPlay) === 'true') {
+        pauseButton.classList.remove('d-none')
+        playButton.classList.add('d-none')
+        pauseButtonMobile.classList.remove('d-none')
+        playButtonMobile.classList.add('d-none')
       } else {
-        pauseButton.classList.add("d-none")
-        playButton.classList.remove("d-none")
-        pauseButtonMobile.classList.add("d-none")
-        playButtonMobile.classList.remove("d-none")
+        pauseButton.classList.add('d-none')
+        playButton.classList.remove('d-none')
+        pauseButtonMobile.classList.add('d-none')
+        playButtonMobile.classList.remove('d-none')
       }
+
+      playButton.addEventListener('click', () => {
+        pauseButton.classList.remove('d-none')
+        playButton.classList.add('d-none')
+        localStorage.setItem(keyPlay, 'true')
+        audio.play()
+      })
+      pauseButton.addEventListener('click', () => {
+        pauseButton.classList.add('d-none')
+        playButton.classList.remove('d-none')
+        localStorage.setItem(keyPlay, 'false')
+        console.log(
+          'PERCENTUALE',
+          Math.ceil((audio.currentTime / audio.duration) * 100)
+        )
+        // console.log('AUDIO PAUSA', audio)
+        audio.pause()
+        console.log(audio.currentTime)
+      })
     })
 
     // Aggiorna barra mentre suona
@@ -163,21 +184,21 @@ const playAudio = function (url, artist, img, title) {
   // Stoppa la canzone precedente prima di suonarne una nuova
   stopPreviousAudio()
 
-  localStorage.setItem(keyPlay, "true")
+  localStorage.setItem(keyPlay, 'true')
 
   const audioURL = url
 
   nomeCanz.innerText = title //Sostituisce il nome della canzone
   nomeArtist.innerText = artist //Sostituisce il nome artista
   albumImg.src = img //Sostituisce l'immagine dell'album
-  nomeCanzMobile.innerText = title + " by " + artist
+  nomeCanzMobile.innerText = title + ' by ' + artist
 
   audio = new Audio(audioURL)
 
-  playButton = document.getElementById("play-album")
-  pauseButton = document.getElementById("pause-album")
-  playButtonMobile = document.getElementById("play-mobile")
-  pauseButtonMobile = document.getElementById("pause-mobile")
+  playButton = document.getElementById('play-album')
+  pauseButton = document.getElementById('pause-album')
+  playButtonMobile = document.getElementById('play-mobile')
+  pauseButtonMobile = document.getElementById('pause-mobile')
   // console.log(playButton)
   // console.log(audio)
 
@@ -190,16 +211,16 @@ const playAudio = function (url, artist, img, title) {
 
   console.log(audio.currentTime)
 
-  vinile.classList.add("vinile")
+  vinile.classList.add('vinile')
 
-  pauseButton.classList.remove("d-none")
-  playButton.classList.add("d-none")
-  pauseButtonMobile.classList.remove("d-none")
-  playButtonMobile.classList.add("d-none")
-  playButton.innerHTML = ""
+  pauseButton.classList.remove('d-none')
+  playButton.classList.add('d-none')
+  pauseButtonMobile.classList.remove('d-none')
+  playButtonMobile.classList.add('d-none')
+  playButton.innerHTML = ''
   playButton.appendChild(audio)
 
-  audio.addEventListener("canplaythrough", (event) => {
+  audio.addEventListener('canplaythrough', (event) => {
     localStorage.setItem(keyTimeDuration, audio.duration)
     /* console.log('DURATA', audio.duration)
      */
@@ -209,34 +230,34 @@ const playAudio = function (url, artist, img, title) {
       barraProgressoFunz(audio)
     }
 
-    playButton.addEventListener("click", () => {
-      pauseButton.classList.remove("d-none")
-      playButton.classList.add("d-none")
-      localStorage.setItem(keyPlay, "true")
+    playButton.addEventListener('click', () => {
+      pauseButton.classList.remove('d-none')
+      playButton.classList.add('d-none')
+      localStorage.setItem(keyPlay, 'true')
       audio.play()
     })
-    pauseButton.addEventListener("click", () => {
-      pauseButton.classList.add("d-none")
-      playButton.classList.remove("d-none")
-      localStorage.setItem(keyPlay, "false")
+    pauseButton.addEventListener('click', () => {
+      pauseButton.classList.add('d-none')
+      playButton.classList.remove('d-none')
+      localStorage.setItem(keyPlay, 'false')
       console.log(
-        "PERCENTUALE",
+        'PERCENTUALE',
         Math.ceil((audio.currentTime / audio.duration) * 100)
       )
       // console.log('AUDIO PAUSA', audio)
       audio.pause()
       console.log(audio.currentTime)
     })
-    playButtonMobile.addEventListener("click", () => {
-      vinile.classList.add("vinile")
-      pauseButtonMobile.classList.remove("d-none")
-      playButtonMobile.classList.add("d-none")
+    playButtonMobile.addEventListener('click', () => {
+      vinile.classList.add('vinile')
+      pauseButtonMobile.classList.remove('d-none')
+      playButtonMobile.classList.add('d-none')
       audio.play()
     })
-    pauseButtonMobile.addEventListener("click", () => {
-      vinile.classList.remove("vinile")
-      pauseButtonMobile.classList.add("d-none")
-      playButtonMobile.classList.remove("d-none")
+    pauseButtonMobile.addEventListener('click', () => {
+      vinile.classList.remove('vinile')
+      pauseButtonMobile.classList.add('d-none')
+      playButtonMobile.classList.remove('d-none')
       // console.log('AUDIO PAUSA', audio)
       audio.pause()
     })
@@ -250,9 +271,9 @@ const barraProgressoFunz = function (aud) {
 
   localStorage.setItem(keyCurrenTime, aud.currentTime)
 
-  const elapsedTime = document.querySelector("footer>div:nth-of-type(2) p.m-0")
+  const elapsedTime = document.querySelector('footer>div:nth-of-type(2) p.m-0')
   elapsedSec = Math.floor(aud.currentTime % 60)
   elapsedTime.innerText =
-    elapsedSec > 9 ? "0:" + elapsedSec : "0:0" + elapsedSec
+    elapsedSec > 9 ? '0:' + elapsedSec : '0:0' + elapsedSec
   // console.log('TEMPO TRASCORSO', elapsedTime.innerText)
 }
