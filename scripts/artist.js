@@ -143,7 +143,7 @@ const getArtist = function () {
                                         <div class="d-flex hstack gap-3 mb-2">
                                         <p class="m-0">${i + 1}</p>
                                         <img src="${albumImage}" alt="" width="50">
-                                        <button class="bottoni-album border-0" onclick="playAudio('${preview}')"><p class="m-0">${songName}</p></button>
+                                        <button class="bottoni-album border-0" onclick="playAudio('${preview}', event)"><p class="m-0" id="songTitle${i}">${songName}</p></button>
                                         </div>
                                     </div>
                                     <div class="col col-2">  
@@ -153,7 +153,7 @@ const getArtist = function () {
                                     </div>
                                     <div class="col col-2">  
                                         <div class="gap-3 mb-2">
-                                        <p class="">${songLength}</p>
+                                        <p id="songLength${i}">${songLength}</p>
                                         </div>
                                     </div>
                                     `
@@ -177,18 +177,38 @@ const getArtist = function () {
 
 getArtist()
 
+//PLAYER FUNZIONANTE
+
 let audio
 
 const barraProgresso = document.getElementById('barra-progresso')
 const vinile = document.getElementById('img-vinile')
 
-const playAudio = function (url) {
+const playAudio = function (url, e) {
   const audioURL = url
 
+//SOSTITUISCO LA DURATA DEL BRANO 
+  //Recupero l'id del button che ha scatenato l'evento,
+  //lo converto in array e lo filtro per recuperare 
+  //solo il numero finale e lo uso per ottenere 
+  //l'id della durata del brano.
+  //Recupero solo il testo della durata del brano
+  //e lo sostituisco nella durata della progressbar
+
+const songTitleId = e.target.id
+const onlyNumber = songTitleId.split('').filter(c => !isNaN(c))
+const onlyIdNumber = "songLength" + onlyNumber.join('')
+const timeValue = document.getElementById(`${onlyIdNumber}`)
+document.querySelector('footer>div:nth-of-type(2) p:nth-of-type(2)').innerText = timeValue.innerText
+
+//Sostituisco il titolo della canzone, il nome dell'artista e l'immagina
+document.getElementById('footerSongName').innerText = e.target.innerText
+console.log(document.getElementById('footerArtistName').innerText = document.querySelector('h2').innerText)
+
+  
   audio = new Audio(audioURL)
 
   const playButton = document.getElementById('play-album')
-  console.lo
   const pauseButton = document.getElementById('pause-album')
   const playButtonMobile = document.getElementById('play-mobile')
   const pauseButtonMobile = document.getElementById('pause-mobile')
@@ -251,4 +271,9 @@ const barraProgressoFunz = function (aud) {
   barraProgresso.style.width = `${Math.ceil(
     (aud.currentTime / aud.duration) * 100
   )}%`
+
+  const elapsedTime = document.querySelector('footer>div:nth-of-type(2) p.m-0')
+  elapsedSec = Math.floor(aud.currentTime % 60)
+  elapsedTime.innerText = elapsedSec > 9 ? ("0:" + elapsedSec) : ("0:0" + elapsedSec) 
+  // console.log('TEMPO TRASCORSO', elapsedTime.innerText)
 }

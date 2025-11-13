@@ -134,7 +134,6 @@ const playAudio = function (url) {
   audio = new Audio(audioURL)
 
   const playButton = document.getElementById('play-album')
-  console.lo
   const pauseButton = document.getElementById('pause-album')
   const playButtonMobile = document.getElementById('play-mobile')
   const pauseButtonMobile = document.getElementById('pause-mobile')
