@@ -253,7 +253,6 @@ const playAudio = function (url, artist, img, title) {
     localStorage.setItem(keyTimeDuration, audio.duration)
     /* console.log('DURATA', audio.duration)
      */
-    barraProgresso.style.width = localStorage.getItem(keyCurrenTime)
 
     audio.ontimeupdate = function () {
       barraProgressoFunz(audio)
