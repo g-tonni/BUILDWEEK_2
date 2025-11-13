@@ -465,14 +465,14 @@
       </div>
       <!-- FINE PRIMA PARTE FOOTER -->
       <div class="d-flex flex-column align-items-center w-50 px-5">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
           <a href="#"><i class="bi bi-shuffle m-0 me-3"></i></a>
           <a href="#"><i class="bi bi-skip-start-fill m-0 me-3"></i></a>
           <a>
-            <i class="bi bi-play-circle-fill m-0 me-3" id="play-album"></i>
+            <i class="bi bi-play-circle-fill m-0 me-3 fs-2" id="play-album"></i>
           </a>
           <a id="pause-album" class="d-none">
-            <i class="bi bi-pause-circle-fill m-0 me-3"></i>
+            <i class="bi bi-pause-circle-fill m-0 me-3 fs-2"></i>
           </a>
           <a href="#"><i class="bi bi-skip-end-fill m-0 me-3"></i></a>
           <a href="#"><i class="bi bi-repeat m-0"></i></a>
@@ -490,7 +490,7 @@
               style="height: 4px"
             >
               <div
-                class="progress-bar text-bg-success"
+                class="progress-bar text-bg-primary"
                 id="barra-progresso"
               ></div>
             </div>
@@ -499,24 +499,17 @@
         </div>
       </div>
       <!-- FINE SECONDA PARTE FOOTER -->
-      <div
-        class="d-flex align-items-center justify-content-between"
-        style="width: 300px"
-      >
-        <a href="#"><i class="bi bi-mic fs-4 m-0"></i></a>
-        <a href="#"><i class="bi bi-card-list fs-4 m-0"></i></a>
-        <a href="#"><i class="bi bi-pc-display fs-4 m-0"></i></a>
-        <a href="#"><i class="bi bi-volume-up fs-4 m-0"></i></a>
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="#"><i class="bi bi-mic fs-4 m-0 me-3"></i></a>
+        <a href="#"><i class="bi bi-card-list fs-4 m-0 me-3"></i></a>
+        <a href="#"><i class="bi bi-pc-display fs-4 m-0 me-3"></i></a>
+        <a href="#"><i class="bi bi-volume-up fs-4 m-0 me-3"></i></a>
         <div
-          class="progress"
-          role="progressbar"
-          aria-label="Success example 4px high"
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          style="height: 4px; width: 70px"
+          class="d-flex align-items-center me-3"
+          style="min-width: 80px; max-width: 150px"
         >
-          <div class="progress-bar text-bg-success" style="width: 25%"></div>
+          <input type="range" class="form-range" id="volume" />
+          <output for="range4" id="rangeValue" aria-hidden="true"></output>
         </div>
         <a href="#"><i class="bi bi-arrows-angle-expand fs-4 m-0"></i></a>
       </div>

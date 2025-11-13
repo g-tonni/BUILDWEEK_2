@@ -78,6 +78,13 @@ const stopPreviousAudio = function () {
   }
 }
 
+const rangeInput = document.getElementById('volume')
+const rangeOutput = document.getElementById('rangeValue')
+
+const numVol = function (num) {
+  return num / 100
+}
+
 let keyURL = 'urlAudio'
 let keyCurrenTime = 'currentTimeAudio'
 let keyTimeDuration = 'durationAudio'
@@ -85,6 +92,7 @@ let keyImg = 'imgAudio'
 let keyTitle = 'titleAudio'
 let keyArtist = 'artistAudio'
 let keyPlay = 'playAudio'
+let keyVolume = 'volumeAudio'
 
 /* console.log('URL AUDIO', localStorage.getItem(keyURL))
 console.log('URL AUDIO', localStorage.getItem(keyArtist)) */
@@ -108,9 +116,8 @@ let pauseButton = document.getElementById('pause-album')
 let playButtonMobile = document.getElementById('play-mobile')
 let pauseButtonMobile = document.getElementById('pause-mobile')
 
-// -----------------------------
 // RIPRISTINO AUDIO SALVATO
-// -----------------------------
+
 window.addEventListener('load', () => {
   stopPreviousAudio()
 
@@ -118,24 +125,29 @@ window.addEventListener('load', () => {
   const savedTime = localStorage.getItem(keyCurrenTime)
 
   if (savedURL) {
-    // Crea il nuovo audio
     audio = new Audio(savedURL)
+    playButton.appendChild(audio)
+
+    audio.addEventListener('loadedmetadata', () => {
+      if (savedTime) {
+        audio.currentTime = parseFloat(savedTime)
+      }
+      audio.volume = localStorage.getItem(keyVolume)
+      audio.addEventListener('volumechange', () => {
+        rangeInput.value = audio.volume * 100
+      })
+    })
 
     audio.addEventListener('canplay', () => {
-      // Riposiziona al punto esatto
-      if (savedTime) {
-        audio.currentTime = savedTime
-      }
-      playButton.appendChild(audio)
-
-      audio.play()
-
-      // Fai partire la riproduzione
-
-      // Ripristina rotazione vinile
       vinile.classList.add('vinile')
 
-      // Ripristina pulsanti corretti
+      rangeInput.addEventListener('input', function () {
+        // console.log(numVol(this.value))
+        const volumeCorrente = numVol(this.value)
+        audio.volume = volumeCorrente
+        localStorage.setItem(keyVolume, volumeCorrente)
+      })
+
       document.getElementById('pause-album').classList.remove('d-none')
       document.getElementById('play-album').classList.add('d-none')
       document.getElementById('pause-mobile').classList.remove('d-none')
@@ -146,11 +158,13 @@ window.addEventListener('load', () => {
         playButton.classList.add('d-none')
         pauseButtonMobile.classList.remove('d-none')
         playButtonMobile.classList.add('d-none')
+        audio.play()
       } else {
         pauseButton.classList.add('d-none')
         playButton.classList.remove('d-none')
         pauseButtonMobile.classList.add('d-none')
         playButtonMobile.classList.remove('d-none')
+        audio.pause()
       }
 
       playButton.addEventListener('click', () => {
@@ -163,13 +177,28 @@ window.addEventListener('load', () => {
         pauseButton.classList.add('d-none')
         playButton.classList.remove('d-none')
         localStorage.setItem(keyPlay, 'false')
-        console.log(
+        /*   console.log(
           'PERCENTUALE',
           Math.ceil((audio.currentTime / audio.duration) * 100)
-        )
+        ) */
         // console.log('AUDIO PAUSA', audio)
         audio.pause()
-        console.log(audio.currentTime)
+        /*         console.log(audio.currentTime) */
+      })
+      playButtonMobile.addEventListener('click', () => {
+        vinile.classList.add('vinile')
+        pauseButtonMobile.classList.remove('d-none')
+        playButtonMobile.classList.add('d-none')
+        localStorage.setItem(keyPlay, 'true')
+        audio.play()
+      })
+      pauseButtonMobile.addEventListener('click', () => {
+        vinile.classList.remove('vinile')
+        pauseButtonMobile.classList.add('d-none')
+        playButtonMobile.classList.remove('d-none')
+        localStorage.setItem(keyPlay, 'false')
+        // console.log('AUDIO PAUSA', audio)
+        audio.pause()
       })
     })
 

@@ -83,7 +83,7 @@ const crateCanzoni = function (obj, i) {
     obj.artist.id
   }" class="fs-7 artisti-album">${obj.artist.name}</a>
     </td>
-    <td class="terzaCol pt-4 pb-2">${obj.rank}</td>
+    <td class="terzaCol pt-4 pb-2">${obj.rank.toLocaleString('it-IT')}</td>
     <td class="quartaCol pt-4 pb-2">${
       (obj.duration - (obj.duration % 60)) / 60
     }:${num(obj.duration % 60)}</td>

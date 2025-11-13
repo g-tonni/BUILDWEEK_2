@@ -1,68 +1,68 @@
-@import "./scss/functions";
-@import "./scss/variables";
+@import './scss/functions';
+@import './scss/variables';
 
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-Light.otf);
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-LightItalic.otf);
   font-weight: 300;
   font-style: italic;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-Book.otf);
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-BookItalic.otf);
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-Medium.otf);
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-MediumItalic.otf);
   font-weight: 500;
   font-style: italic;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-MediumItalic.otf);
   font-weight: 500;
   font-style: italic;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-Bold.otf);
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-BoldItalic.otf);
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-Black.otf);
   font-weight: 900;
   font-style: normal;
 }
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-BlackItalic.otf);
   font-weight: 900;
   font-style: italic;
@@ -78,8 +78,8 @@ $h9-font-size: $font-size-base * 0.4;
 $h10-font-size: $font-size-base * 0.2;
 
 $new-font-sizes: (
-  "big-s": $big-s,
-  "big": $big,
+  'big-s': $big-s,
+  'big': $big,
   7: $h7-font-size,
   8: $h8-font-size,
   9: $h9-font-size,
@@ -89,7 +89,7 @@ $new-font-sizes: (
 $font-sizes: map-merge($font-sizes, $new-font-sizes);
 
 #font {
-  font-family: "Circular";
+  font-family: 'Circular';
   src: url(./fonts/CircularStd-Book.otf);
   font-weight: 400;
   font-style: normal;
@@ -103,13 +103,19 @@ $dark-light: #323232;
 $dark-unlight: #171717;
 
 $new-theme-colors: (
-  "primary": $new-primary,
-  "dark": $new-dark,
-  "dark-light": $dark-light,
-  "dark-unlight": $dark-unlight,
+  'primary': $new-primary,
+  'dark': $new-dark,
+  'dark-light': $dark-light,
+  'dark-unlight': $dark-unlight,
 );
 
 $theme-colors: map-merge($theme-colors, $new-theme-colors);
+
+$component-active-bg: $new-primary;
+
+$form-range-track-height: 0.4rem;
+$form-range-track-bg: $dark-light;
+$form-range-thumb-width: 0.4rem !default;
 
 #prima-parte-home {
   box-shadow: inset 200px -150px 300px 50px rgba(0, 0, 0, 1);
@@ -205,10 +211,6 @@ p {
 
 #albumIconsDiv a {
   margin-right: 18px;
-}
-
-#playButton {
-  color: #18cf58;
 }
 
 table {
@@ -313,4 +315,4 @@ table {
   background-color: rgba(255, 255, 255, 0.085);
 }
 
-@import "./scss/bootstrap.scss";
+@import './scss/bootstrap.scss';
