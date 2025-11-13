@@ -72,14 +72,14 @@ const createBase = function (id) {
   
   <div class="col-6 col-md-4 col-lg-3 altro-cards">
     <a href="albums.html?id=${dati.id}"
-      ><div class="bg-dark-unlight rounded p-2">
+      ><div class="altro-hover rounded p-2">
         <img
           src="${dati.cover_big}"
           class="img-fluid rounded mb-2 w-100"
           alt=""
         />
         <h6 class="text-white mb-1 text-truncate">${dati.title}</h6>
-        <p class="text-secondary small mb-0">
+        <p class="text-secondary small mb-0 text-truncate">
           ${dati.artist.name}
         </p>
       </div></a>
@@ -169,8 +169,8 @@ const createBrani = function (obj) {
     <div
         class="d-flex flex-column justify-content-around flex-grow-1 h-100"
     >
-        <div class="d-flex justify-content-between">
-        <div class="d-flex">
+        <div class="d-flex justify-content-between align-items-center altro-hover p-2 rounded-2 mb-2">
+        <div class="d-flex align-items-center">
             <div
             style="width: 50px; height: 50px"
             class="rounded-3 overflow-hidden me-3"
@@ -181,7 +181,7 @@ const createBrani = function (obj) {
                 class="img-fluid"
             />
             </div>
-            <div class="mb-3">
+            <div>
             <a href="albums.html?id=${
               obj.album.id
             }" class="w-75"><p class="m-0 fw-bold text-truncate w-100">${
@@ -195,7 +195,7 @@ const createBrani = function (obj) {
             </div>
         </div>
         <div>
-            <p>${(obj.duration - (obj.duration % 60)) / 60}:${num(
+            <p class="m-0">${(obj.duration - (obj.duration % 60)) / 60}:${num(
     obj.duration % 60
   )}</p>
         </div>
@@ -217,7 +217,7 @@ const createAlbum = function (obj) {
   for (let i = 0; i < obj.length; i++) {
     album.innerHTML += `
     <div class="col col-12 col-md-4 col-lg-2">
-      <div class="bg-dark-unlight p-2 rounded-3">
+      <div class="altro-hover p-2 rounded-3">
        <div class="w-100 overflow-hidden rounded-3 mb-2">
           <a href="albums.html?id=${obj[i].id}">
             <img

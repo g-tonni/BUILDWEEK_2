@@ -253,9 +253,13 @@ table {
   max-width: 95%;
 }
 
-.vinile {
+.vinile-statico {
   width: 40px;
+}
+
+.vinile {
   animation: spin 7s linear infinite;
+  animation-fill-mode: forwards;
 }
 
 @keyframes spin {
@@ -287,6 +291,26 @@ table {
   opacity: 0.4 !important;
   pointer-events: none !important;
   cursor: default !important;
+}
+
+.buonasera-hover {
+  background-color: $dark-light;
+}
+
+.buonasera-hover:hover {
+  background-color: rgba(255, 255, 255, 0.354);
+}
+
+.altro-hover {
+  background-color: $dark-unlight;
+}
+
+.altro-hover:hover {
+  background-color: $dark-light;
+}
+
+.album-elenco-hover:hover {
+  background-color: rgba(255, 255, 255, 0.085);
 }
 
 @import "./scss/bootstrap.scss";

@@ -51,7 +51,7 @@ const url = location.search
 // console.log(url)
 const allTheParameters = new URLSearchParams(url)
 const id = allTheParameters.get("id")
-console.log("ID", id)
+// console.log('ID', id)
 
 fetch(linkAlbum + id)
   .then((res) => {
@@ -62,13 +62,13 @@ fetch(linkAlbum + id)
     }
   })
   .then((dati) => {
-    console.log(dati)
+    // console.log(dati)
 
     createIntestazione(dati)
 
     for (let i = 0; i < dati.tracks.data.length; i++) {
       crateCanzoni(dati.tracks.data[i], i + 1)
-      console.log(dati.tracks.data[i].preview)
+      // console.log(dati.tracks.data[i].preview)
     }
 
     let img = document.getElementById("img-details")
@@ -103,7 +103,7 @@ fetch(linkAlbum + id)
 
       const averageColor = `rgb(${avgR}, ${avgG}, ${avgB})`
 
-      console.log("Colore medio:", averageColor)
+      // console.log('Colore medio:', averageColor)
 
       const col = document.getElementById("colonnaCentrale")
       col.style.backgroundColor = averageColor
@@ -117,12 +117,12 @@ const contenitoreCanzoni = document.getElementById("elenco-canzoni")
 const crateCanzoni = function (obj, i) {
   contenitoreCanzoni.innerHTML += `
     
-    <tr>
+    <tr class="album-elenco-hover">
       <td class="primaCol pt-4 pb-2">${i}</td>
     <td class="secondaCol pt-4 pb-2">
-    <button onclick="playAudio('${
-      obj.preview
-    }')" class="border-0 bottoni-album">${
+    <button onclick="playAudio('${obj.preview}', '${obj.artist.name}', '${
+    obj.album.cover_big
+  }', '${obj.title}')" class="border-0 bottoni-album">${
     obj.title
   }</button><br /><a href="artist.html?id=${
     obj.artist.id
@@ -166,36 +166,4 @@ const createIntestazione = function (obj) {
     </div>
 
     `
-}
-
-let audio
-
-const playAudio = function (url) {
-  const audioURL = url
-
-  audio = new Audio(audioURL)
-
-  const playButton = document.getElementById("play")
-  const pauseButton = document.getElementById("pause")
-  console.log(playButton)
-  console.log(audio)
-
-  audio.play()
-  pauseButton.classList.remove("d-none")
-  playButton.classList.add("d-none")
-  playButton.innerHTML = ""
-  playButton.appendChild(audio)
-  audio.addEventListener("canplaythrough", (event) => {
-    playButton.addEventListener("click", () => {
-      pauseButton.classList.remove("d-none")
-      playButton.classList.add("d-none")
-      audio.play()
-    })
-    pauseButton.addEventListener("click", () => {
-      pauseButton.classList.add("d-none")
-      playButton.classList.remove("d-none")
-      console.log("AUDIO PAUSA", audio)
-      audio.pause()
-    })
-  })
 }
