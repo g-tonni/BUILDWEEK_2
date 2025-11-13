@@ -44,23 +44,9 @@ const getArtist = function () {
 
       //Sostituisco il numero dei fan nell'elemento partendo da id='headers'
       const fans = header.querySelector('p')
-      //Trasformo in un array ed inserisco il '.' ogni 3 numeri
-      const arrFans = artistDetails.nb_fan.toString().split('')
-      const dotArr = []
-      for (let i = 1; arrFans.length - i >= 0; i++) {
-        if (i % 3 !== 0) {
-          dotArr.unshift(arrFans[arrFans.length - i])
-        } else {
-          dotArr.unshift(arrFans[arrFans.length - i])
-          dotArr.unshift('.')
-        }
-      }
-      //Controllo che non inizi con un punto e ritrasformo in stringa
-      if (dotArr[0] === '.') {
-        dotArr.shift()
-      }
+   
       //Inserisco nel HTML
-      fans.innerText = dotArr.join('') + ' ascoltatori mensili'
+      fans.innerText = artistDetails.nb_fan.toLocaleString('it-IT') + ' ascoltatori mensili'
 
       //Recupero una lista di canzoni dell'artista
 
@@ -111,7 +97,7 @@ const getArtist = function () {
 
               const songName = bestSongs.data[i].title
               const albumImage = bestSongs.data[i].album.cover_medium
-              const nListeners = bestSongs.data[i].rank
+              const nListeners = bestSongs.data[i].rank.toLocaleString('it-IT')
               const preview = bestSongs.data[i].preview
               const songLength = duration
 
@@ -142,7 +128,7 @@ const getArtist = function () {
                                     <div class="col col-8 pe-0">
                                         <div class="d-flex hstack gap-3 mb-2">
                                         <p class="m-0">${i + 1}</p>
-                                        <img src="${albumImage}" alt="" width="50">
+                                        <img src="${albumImage}" alt="" width="50" id=albumImage${i}>
                                         <button class="bottoni-album border-0" onclick="playAudio('${preview}', event)"><p class="m-0" id="songTitle${i}">${songName}</p></button>
                                         </div>
                                     </div>
@@ -196,15 +182,21 @@ const playAudio = function (url, e) {
   //e lo sostituisco nella durata della progressbar
 
 const songTitleId = e.target.id
-const onlyNumber = songTitleId.split('').filter(c => !isNaN(c))
-const onlyIdNumber = "songLength" + onlyNumber.join('')
+const onlyNumber = songTitleId.split('').filter(c => !isNaN(c)).join('')
+const onlyIdNumber = "songLength" + onlyNumber
 const timeValue = document.getElementById(`${onlyIdNumber}`)
 document.querySelector('footer>div:nth-of-type(2) p:nth-of-type(2)').innerText = timeValue.innerText
 
-//Sostituisco il titolo della canzone, il nome dell'artista e l'immagina
-document.getElementById('footerSongName').innerText = e.target.innerText
-console.log(document.getElementById('footerArtistName').innerText = document.querySelector('h2').innerText)
+//SOSTITUISCO IL TITOLO DELLA CANZONE, IL NOME DELL'ARTISTA E L'IMMAGINE
+  //Recupero l'id della traccia e la cover dell'album
+const albumCoverId = "albumImage" + onlyNumber
 
+document.getElementById('footerSongName').innerText = e.target.innerText    //Sostituisce il nome della canzone
+document.getElementById('footerArtistName').innerText = document.querySelector('h2').innerText    //Sostituisce il nome artista
+document.getElementById('footer-album-desktop').src = document.getElementById(albumCoverId).src  //Sostituisce l'immagine dell'album
+document.getElementById('footer-title-mobile').innerText = e.target.innerText + " by " + document.querySelector('h2').innerText   //Sostituisce il titolo da mobile
+console.log(e.target.id)
+  console.log("ALBUM COVER ID",albumCoverId);
   
   audio = new Audio(audioURL)
 
