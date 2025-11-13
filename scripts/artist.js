@@ -133,7 +133,7 @@ const getArtist = function () {
                         <div class="d-flex hstack gap-3 mb-2">
                         <p class="m-0">${i + 1}</p>
                         <img src="${albumImage}" alt="" width="50" id=albumImage${i}>
-                        <button class="bottoni-album border-0" onclick="playAudio('${preview}', '${artist}', '${albumImage}', '${songName}', event)"><p class="m-0" id="songTitle${i}">${songName}</p></button>
+                        <button class="bottoni-album border-0" onclick="playAudio('${preview}', '${artist}', '${albumImage}', '${songName}')"><p class="m-0" id="songTitle${i}">${songName}</p></button>
                         </div>
                     </div>
                     <div class="col col-2">  
@@ -169,7 +169,7 @@ getArtist()
 
 //PLAYER FUNZIONANTE
 
-let keyURL = 'urlAudio'
+/* let keyURL = 'urlAudio'
 let keyCurrenTime = 'currentTimeAudio'
 let keyTimeDuration = 'durationAudio'
 let keyImg = 'imgAudio'
@@ -182,17 +182,17 @@ const barraProgresso = document.getElementById('barra-progresso')
 const vinile = document.getElementById('img-vinile')
 
 const playAudio = function (url, artist, img, title) {
-  const audioURL = url
+  const audioURL = url */
 
-  //SOSTITUISCO LA DURATA DEL BRANO
-  //Recupero l'id del button che ha scatenato l'evento,
-  //lo converto in array e lo filtro per recuperare
-  //solo il numero finale e lo uso per ottenere
-  //l'id della durata del brano.
-  //Recupero solo il testo della durata del brano
-  //e lo sostituisco nella durata della progressbar
+//SOSTITUISCO LA DURATA DEL BRANO
+//Recupero l'id del button che ha scatenato l'evento,
+//lo converto in array e lo filtro per recuperare
+//solo il numero finale e lo uso per ottenere
+//l'id della durata del brano.
+//Recupero solo il testo della durata del brano
+//e lo sostituisco nella durata della progressbar
 
-  /* const songTitleId = e.target.id
+/* const songTitleId = e.target.id
   const onlyNumber = songTitleId
     .split('')
     .filter((c) => !isNaN(c))
@@ -203,19 +203,19 @@ const playAudio = function (url, artist, img, title) {
     'footer>div:nth-of-type(2) p:nth-of-type(2)'
   ).innerText = timeValue.innerText */
 
-  //SOSTITUISCO IL TITOLO DELLA CANZONE, IL NOME DELL'ARTISTA E L'IMMAGINE
-  //Recupero l'id della traccia e la cover dell'album
-  //const albumCoverId = 'albumImage' + onlyNumber
+//SOSTITUISCO IL TITOLO DELLA CANZONE, IL NOME DELL'ARTISTA E L'IMMAGINE
+//Recupero l'id della traccia e la cover dell'album
+//const albumCoverId = 'albumImage' + onlyNumber
 
-  document.getElementById('footerSongName').innerText = title //Sostituisce il nome della canzone
+/*  document.getElementById('footerSongName').innerText = title //Sostituisce il nome della canzone
   document.getElementById('footerArtistName').innerText = artist //Sostituisce il nome artista
   document.getElementById('footer-album-desktop').src = img //Sostituisce l'immagine dell'album
   document.getElementById('footer-title-mobile').innerText =
-    title + ' by ' + artist //Sostituisce il titolo da mobile
-  /* console.log(e.target.id)
+    title + ' by ' + artist //Sostituisce il titolo da mobile */
+/* console.log(e.target.id)
   console.log('ALBUM COVER ID', albumCoverId) */
 
-  audio = new Audio(audioURL)
+/*  audio = new Audio(audioURL)
 
   const playButton = document.getElementById('play-album')
   const pauseButton = document.getElementById('pause-album')
@@ -243,10 +243,10 @@ const playAudio = function (url, artist, img, title) {
   playButton.appendChild(audio)
 
   audio.addEventListener('canplaythrough', (event) => {
-    localStorage.setItem(keyTimeDuration, audio.duration)
-    /* console.log('DURATA', audio.duration)
-     */
-    audio.ontimeupdate = function () {
+    localStorage.setItem(keyTimeDuration, audio.duration) */
+/* console.log('DURATA', audio.duration)
+ */
+/*     audio.ontimeupdate = function () {
       barraProgressoFunz(audio)
     }
 
@@ -287,11 +287,11 @@ const barraProgressoFunz = function (aud) {
     (aud.currentTime / aud.duration) * 100
   )}%`
 
-  localStorage.setItem(`keyCurrenTime`, aud.currentTime)
+  localStorage.setItem(keyCurrenTime, aud.currentTime)
 
   const elapsedTime = document.querySelector('footer>div:nth-of-type(2) p.m-0')
   elapsedSec = Math.floor(aud.currentTime % 60)
   elapsedTime.innerText =
     elapsedSec > 9 ? '0:' + elapsedSec : '0:0' + elapsedSec
   // console.log('TEMPO TRASCORSO', elapsedTime.innerText)
-}
+} */

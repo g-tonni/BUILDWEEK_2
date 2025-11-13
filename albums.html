@@ -394,7 +394,9 @@
             id="img-vinile"
           />
         </div>
-        <p class="flex-grow-1 m-0 text-truncate">Titolo canzone</p>
+        <p class="flex-grow-1 m-0 text-truncate" id="footer-title-mobile">
+          Titolo canzone
+        </p>
         <a href="#"><i class="bi bi-pc-display fs-4 m-0 me-3"></i></a>
         <a href="#"><i class="bi bi-heart m-0 me-3"></i></a>
         <a><i class="bi bi-caret-right-fill m-0" id="play-mobile"></i></a>
@@ -434,11 +436,12 @@
             src="./assets/imgs/search/image-14.jpg"
             alt="Immagine"
             style="width: 70px; height: 70px"
+            id="footer-album-desktop"
           />
         </div>
         <div class="me-5">
-          <p class="m-0 fw-bold">Fat Funny Friend</p>
-          <p class="m-0">Queen</p>
+          <p class="m-0 fw-bold" id="footerSongName">Fat Funny Friend</p>
+          <p class="m-0" id="footerArtistName">Queen</p>
         </div>
         <div class="d-flex align-items-center">
           <i class="bi bi-heart"></i>
@@ -508,5 +511,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./scripts/albums.js"></script>
+    <script src="./scripts/play-audio.js"></script>
   </body>
 </html>
