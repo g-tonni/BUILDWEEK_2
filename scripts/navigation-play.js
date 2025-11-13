@@ -231,6 +231,8 @@ const playAudio = function (url, artist, img, title) {
   // console.log(playButton)
   // console.log(audio)
 
+  audio.volume = localStorage.getItem(keyVolume)
+
   localStorage.setItem(keyArtist, artist)
   localStorage.setItem(keyTitle, title)
   localStorage.setItem(keyImg, img)
