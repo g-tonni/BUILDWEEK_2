@@ -43,12 +43,48 @@ nextBtn.addEventListener("click", (e) => {
   }
 })
 
+const syncPlayButtons = function (isPlaying) {
+  const playButton = document.getElementById("play-album")
+  const pauseButton = document.getElementById("pause-album")
+  const playButtonMobile = document.getElementById("play-mobile")
+  const pauseButtonMobile = document.getElementById("pause-mobile")
+
+  if (isPlaying) {
+    // Mostra PAUSE
+    pauseButton.classList.remove("d-none")
+    playButton.classList.add("d-none")
+
+    pauseButtonMobile.classList.remove("d-none")
+    playButtonMobile.classList.add("d-none")
+
+    vinile.classList.add("vinile")
+  } else {
+    // Mostra PLAY
+    pauseButton.classList.add("d-none")
+    playButton.classList.remove("d-none")
+
+    pauseButtonMobile.classList.add("d-none")
+    playButtonMobile.classList.remove("d-none")
+
+    vinile.classList.remove("vinile")
+  }
+}
+
+const stopPreviousAudio = function () {
+  if (audio) {
+    audio.pause()
+    audio.src = "" // scollega la sorgente
+    audio = null // rimuovi riferimento
+  }
+}
+
 let keyURL = "urlAudio"
 let keyCurrenTime = "currentTimeAudio"
 let keyTimeDuration = "durationAudio"
 let keyImg = "imgAudio"
 let keyTitle = "titleAudio"
 let keyArtist = "artistAudio"
+let keyPlay = "playAudio"
 
 /* console.log('URL AUDIO', localStorage.getItem(keyURL))
 console.log('URL AUDIO', localStorage.getItem(keyArtist)) */
@@ -67,8 +103,68 @@ let audio
 
 const barraProgresso = document.getElementById("barra-progresso")
 const vinile = document.getElementById("img-vinile")
+let playButton = document.getElementById("play-album")
+let pauseButton = document.getElementById("pause-album")
+let playButtonMobile = document.getElementById("play-mobile")
+let pauseButtonMobile = document.getElementById("pause-mobile")
+
+// -----------------------------
+// RIPRISTINO AUDIO SALVATO
+// -----------------------------
+window.addEventListener("load", () => {
+  stopPreviousAudio()
+
+  const savedURL = localStorage.getItem(keyURL)
+  const savedTime = localStorage.getItem(keyCurrenTime)
+
+  if (savedURL) {
+    // Crea il nuovo audio
+    audio = new Audio(savedURL)
+
+    audio.addEventListener("canplay", () => {
+      // Riposiziona al punto esatto
+      if (savedTime) {
+        audio.currentTime = savedTime
+      }
+
+      // Fai partire la riproduzione
+      audio.play()
+
+      // Ripristina rotazione vinile
+      vinile.classList.add("vinile")
+
+      // Ripristina pulsanti corretti
+      document.getElementById("pause-album").classList.remove("d-none")
+      document.getElementById("play-album").classList.add("d-none")
+      document.getElementById("pause-mobile").classList.remove("d-none")
+      document.getElementById("play-mobile").classList.add("d-none")
+
+      if (localStorage.getItem(keyPlay) === "true") {
+        pauseButton.classList.remove("d-none")
+        playButton.classList.add("d-none")
+        pauseButtonMobile.classList.remove("d-none")
+        playButtonMobile.classList.add("d-none")
+      } else {
+        pauseButton.classList.add("d-none")
+        playButton.classList.remove("d-none")
+        pauseButtonMobile.classList.add("d-none")
+        playButtonMobile.classList.remove("d-none")
+      }
+    })
+
+    // Aggiorna barra mentre suona
+    audio.ontimeupdate = function () {
+      barraProgressoFunz(audio)
+    }
+  }
+})
 
 const playAudio = function (url, artist, img, title) {
+  // Stoppa la canzone precedente prima di suonarne una nuova
+  stopPreviousAudio()
+
+  localStorage.setItem(keyPlay, "true")
+
   const audioURL = url
 
   nomeCanz.innerText = title //Sostituisce il nome della canzone
@@ -78,10 +174,10 @@ const playAudio = function (url, artist, img, title) {
 
   audio = new Audio(audioURL)
 
-  const playButton = document.getElementById("play-album")
-  const pauseButton = document.getElementById("pause-album")
-  const playButtonMobile = document.getElementById("play-mobile")
-  const pauseButtonMobile = document.getElementById("pause-mobile")
+  playButton = document.getElementById("play-album")
+  pauseButton = document.getElementById("pause-album")
+  playButtonMobile = document.getElementById("play-mobile")
+  pauseButtonMobile = document.getElementById("pause-mobile")
   // console.log(playButton)
   // console.log(audio)
 
@@ -116,11 +212,13 @@ const playAudio = function (url, artist, img, title) {
     playButton.addEventListener("click", () => {
       pauseButton.classList.remove("d-none")
       playButton.classList.add("d-none")
+      localStorage.setItem(keyPlay, "true")
       audio.play()
     })
     pauseButton.addEventListener("click", () => {
       pauseButton.classList.add("d-none")
       playButton.classList.remove("d-none")
+      localStorage.setItem(keyPlay, "false")
       console.log(
         "PERCENTUALE",
         Math.ceil((audio.currentTime / audio.duration) * 100)
