@@ -15,6 +15,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/temporaneo-artista.css">
     <title>Spotify - Home</title>
   </head>
   <body id="font">
@@ -249,11 +250,17 @@
           <!-- FINE PARTE COMUNE -->
 
           <section id="header" class=" m-0 p-0">
-            <div class="container-fluid p-0">
+            <div class="container-fluid m-0">
                 <div class="row">
-                    <div class="col bg-dark p-0">
+                    <div class="col p-0">
                     <div class="position-relative pe-0">
-                        <img src="https://placehold.co/1300x500/545464/FFFFFF/png" alt="" class="img-fluid" id="artist-img" style="width: 100%; height: 30rem; object-fit: cover; object-position: 50% 20%;">
+                        <img src="https://placehold.co/1300x500/545464/FFFFFF/png" alt="" class="img " id="artist-img" style="width: 100%; height: 30rem; object-fit: cover; object-position: 50% 20%;">
+                        <canvas
+                        id="imgCanvas"
+                        class="d-none"
+                        width="857"
+                        height="571"
+                      ></canvas> 
                         <div class="position-absolute top-50 ps-3 pt-4">
                             <i class="bi bi-patch-check-fill fs-6"> <span>Artista verificato</span></i>
                             <h2 class="fs-1 text-white">Nome Artista</h2>
@@ -263,17 +270,18 @@
                 </div>
             </div>
           </section>
-          <section class=" mb-5">
+          <section class="gradation">
             <div id="" class="container pt-3">
               <div class="row">
                 <div class="col hstack gap-3">
                   <i class="bi bi-play-circle-fill text-primary  fs-1"></i>
                   <button type="button" class="btn btn-outline-light"><span class="fs-6">FOLLOWING</span></button>
-                  <i class="bi bi-three-dots"></i>
+                  <i class="bi bi-three-dots d-none d-md-flex"></i>
+                  <i class="bi bi-three-dots-vertical d-flex d-md-none"></i>
                 </div>
                 <div class="container text-white my-2">
                   <div class="row mt-2">
-                    <div class="col col-12 col-md-8 py-3" id="popolari"><h4>Popolari</h4>
+                    <div class="col col-12 col-lg-8 py-3" id="popolari"><h4>Popolari</h4>
                       <div class="container mt-4">
                         <!-- <div class="row align-items-baseline">
                           <div class="col col-6 pe-0">
@@ -296,7 +304,7 @@
                         </div>   -->
                       </div>
                     </div>
-                    <div class="col col-4 py-3 d-none d-md-flex flex-column" id="piaciuti">
+                    <div class="col col-10 col-lg-4 py-3 d-none d-md-flex flex-column" id="piaciuti">
                       <h4>Brani che ti piacciono</h4>
                       <div class="container">
                         <div class="row">
@@ -417,7 +425,7 @@
 
     <!-- FOOTER MOBILE -->
 
-    <footer
+    <section
       class="d-flex flex-column position-fixed bottom-0 w-100 mx-3 d-md-none"
       id="footer-mobile"
     >
@@ -459,7 +467,7 @@
           ></a
         >
       </div>
-    </footer>
+    </section>
 
     <!-- FOOTER DESKTOP -->
     <footer
@@ -540,5 +548,6 @@
     ></script>
     <script src="./scripts/artist.js"></script>
     <script src="./scripts/navigation-play.js"></script>
+    <script src="./scripts/temporaneo-artista.js"></script>
   </body>
 </html>

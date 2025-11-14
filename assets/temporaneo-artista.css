@@ -1,0 +1,9 @@
+/* Gradiente per la colonna centrale */
+
+.gradation {
+  background-image: linear-gradient(0deg, #18181888 50%, #4241416f 70%, #4b4b4b60);
+}
+
+.cliccato{
+  font-style: italic;
+}
