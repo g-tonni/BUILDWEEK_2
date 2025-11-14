@@ -130,9 +130,9 @@ const getArtist = function () {
               songInfo.classList.add('align-items-center')
               songInfo.innerHTML = `
                     <div class="col col-9 col-md-8 pe-0">
-                        <div class="d-flex gap-2 mb-2">
+                        <div class="d-flex align-items-center gap-2 mb-2">
                         <p class="m-0">${i + 1}</p>
-                        <img src="${albumImage}" alt="" width="50" id=albumImage${i}>
+                        <img src="${albumImage}" alt="" id=albumImage${i} class="w-25">
                         <div class="d-flex align-items-center gap-3 mb-2">
                         <div class="vstack align-content-center">
                         <button class="bottoni-album border-0" onclick="playAudio('${preview}', '${artist}', '${albumImage}', '${songName}')"><p class="m-0" id="songTitle${i}">${songName}</p></button>
