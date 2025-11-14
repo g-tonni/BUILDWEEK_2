@@ -287,9 +287,9 @@ table {
   color: rgba(255, 255, 255, 0.787);
 }
 
-.bottoni-album:focus {
+/* .bottoni-album:focus {
   color: #20d760;
-}
+} */
 
 .bottoni-album:hover,
 .artisti-album:hover {
@@ -324,14 +324,16 @@ table {
   scale: 1.03;
 }
 
-.album-elenco-hover:hover {
+.album-elenco-hover:hover,
+.album-elenco-hover:focus-within {
   background-color: rgba(255, 255, 255, 0.085);
   transform: scale(1);
   transition: scale 0.2s;
-  scale: 1.03;
+  scale: 1.02;
 }
 
-.artist-elenco-hover:hover {
+.artist-elenco-hover:hover,
+.artist-elenco-hover:focus-within {
   background-color: rgba(255, 255, 255, 0.201);
   transform: scale(1);
   transition: scale 0.2s;
