@@ -113,6 +113,8 @@ $theme-colors: map-merge($theme-colors, $new-theme-colors);
 
 $component-active-bg: $new-primary;
 
+$input-placeholder-color: rgb(150, 150, 150);
+
 $form-range-track-height: 0.4rem;
 $form-range-track-bg: $dark-light;
 $form-range-thumb-width: 0.4rem !default;
@@ -301,6 +303,9 @@ table {
 
 .buonasera-hover:hover {
   background-color: rgba(255, 255, 255, 0.354);
+  transform: scale(1);
+  transition: scale 0.2s;
+  scale: 1.03;
 }
 
 .altro-hover {
@@ -309,10 +314,23 @@ table {
 
 .altro-hover:hover {
   background-color: $dark-light;
+  transform: scale(1);
+  transition: scale 0.2s;
+  scale: 1.03;
 }
 
 .album-elenco-hover:hover {
   background-color: rgba(255, 255, 255, 0.085);
+  transform: scale(1);
+  transition: scale 0.2s;
+  scale: 1.03;
+}
+
+.artist-elenco-hover:hover {
+  background-color: rgba(255, 255, 255, 0.201);
+  transform: scale(1);
+  transition: scale 0.2s;
+  scale: 1.03;
 }
 
 .gradation {

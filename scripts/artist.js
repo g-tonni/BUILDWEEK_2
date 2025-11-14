@@ -73,7 +73,7 @@ const getArtist = function () {
       const likedSongs = (document.querySelector('img.rounded-circle').src =
         artistDetails.picture_medium)
 
-      const likes = document.querySelector('div.col > p:last-of-type')
+      const likes = document.querySelector('div.col-6 > p')
       likes.innerText += ` ${artistDetails.name}`
 
       //Sostituisco il nome dell'artista nell'elemento partendo da id='headers'
@@ -166,13 +166,18 @@ const getArtist = function () {
               const songInfo = document.createElement('div')
               // console.log(songInfo)
               songInfo.classList.add('row')
+              songInfo.classList.add('p-2')
+              songInfo.classList.add('rounded-2')
+              songInfo.classList.add('artist-elenco-hover')
               songInfo.classList.add('align-items-center')
               songInfo.innerHTML = `
                     <div class="col col-9 col-md-8 pe-0">
-                        <div class="d-flex align-items-center gap-2 mb-2">
-                        <p class="m-0">${i + 1}</p>
-                        <img src="${albumImage}" alt="" id=albumImage${i} class="w-25">
-                        <div class="d-flex align-items-center gap-3 mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                        <div class="text-center" style="width: 20px">
+                          <p class="m-0">${i + 1}</p>
+                        </div>
+                        <img src="${albumImage}" alt="" id=albumImage${i} class="" style="width: 60px; height: 60px">
+                        <div class="d-flex align-items-center gap-3">
                         <div class="vstack align-content-center">
                         <button class="bottoni-album border-0" onclick="playAudio('${preview}', '${artist}', '${albumImage}', '${songName}')"><p class="m-0" id="songTitle${i}">${songName}</p></button>
                         <p class="d-flex d-lg-none">${nListeners}</p>
@@ -181,13 +186,13 @@ const getArtist = function () {
                         </div>
                     </div>
                     <div class="col col-1 col-md-2">  
-                        <div class="gap-3 mb-2">
-                        <p class="d-none d-lg-flex">${nListeners}</p>
+                        <div class="gap-3 d-flex justify-content-end">
+                        <p class="d-none d-lg-flex m-0">${nListeners}</p>
                         </div>
                     </div>
                     <div class="col col-2">  
-                        <div class="gap-3 mb-2">
-                        <p id="songLength${i}" class="d-none d-sm-flex">${songLength}</p>
+                        <div class="gap-3 d-flex justify-content-end">
+                        <p id="songLength${i}" class="d-none d-sm-flex m-0">${songLength}</p>
                         <i class="bi bi-three-dots-vertical d-flex d-sm-none"></i>
                         </div>
                     </div>

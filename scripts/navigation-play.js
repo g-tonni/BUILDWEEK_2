@@ -209,7 +209,7 @@ window.addEventListener('load', () => {
   }
 })
 
-const playAudio = function (url, artist, img, title) {
+const playAudio = function (url, artist, img, title, caret) {
   // Stoppa la canzone precedente prima di suonarne una nuova
   stopPreviousAudio()
 
@@ -217,7 +217,11 @@ const playAudio = function (url, artist, img, title) {
 
   const audioURL = url
 
-  nomeCanz.innerText = title //Sostituisce il nome della canzone
+  console.log(title)
+
+  nomeCanz.innerText =
+    caret >= 0 ? title.slice(0, caret) + "'" + title.slice(caret) : title //Sostituisce il nome della canzone
+
   nomeArtist.innerText = artist //Sostituisce il nome artista
   albumImg.src = img //Sostituisce l'immagine dell'album
   nomeCanzMobile.innerText = title + ' by ' + artist
