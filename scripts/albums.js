@@ -75,9 +75,9 @@ const crateCanzoni = function (obj, i) {
     <tr class="album-elenco-hover">
       <td class="primaCol pt-4 pb-2">${i}</td>
     <td class="secondaCol pt-4 pb-2">
-    <button onclick="playAudio('${obj.preview}', '${obj.artist.name}', '${
+    <button onclick='playAudio("${obj.preview}", "${obj.artist.name}", "${
     obj.album.cover_big
-  }', '${obj.title}')" class="border-0 bottoni-album">${
+  }", "${obj.title}")' class="border-0 bottoni-album">${
     obj.title
   }</button><br /><a href="artist.html?id=${
     obj.artist.id
