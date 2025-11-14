@@ -179,7 +179,12 @@ const getArtist = function () {
                         <img src="${albumImage}" alt="" id=albumImage${i} class="" style="width: 60px; height: 60px">
                         <div class="d-flex align-items-center gap-3">
                         <div class="vstack align-content-center">
-                        <button class="bottoni-album border-0" onclick="playAudio('${preview}', '${artist}', '${albumImage}', '${songName}')"><p class="m-0" id="songTitle${i}">${songName}</p></button>
+                        <button class="bottoni-album" 
+                        onclick='playAudio("${preview}", "${artist}", "${albumImage}", "${songName.replace(
+                "'",
+                ''
+              )}", "${songName.indexOf("'")}")'>${songName}
+                        </button>
                         <p class="d-flex d-lg-none">${nListeners}</p>
                         </div>
                         </div>                        

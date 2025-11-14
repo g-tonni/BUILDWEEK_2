@@ -279,11 +279,16 @@ table {
   text-align: left;
   padding: 0;
   font-weight: bold;
+  border: none;
 }
 
 .bottoni-album,
 .artisti-album {
   color: rgba(255, 255, 255, 0.787);
+}
+
+.bottoni-album:focus {
+  color: #20d760;
 }
 
 .bottoni-album:hover,
@@ -324,6 +329,9 @@ table {
   transform: scale(1);
   transition: scale 0.2s;
   scale: 1.03;
+}
+
+.album-elenco-hover:focus {
 }
 
 .artist-elenco-hover:hover {

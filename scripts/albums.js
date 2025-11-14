@@ -79,7 +79,7 @@ const crateCanzoni = function (obj, i) {
     obj.album.cover_big
   }", "${obj.title.replace("'", '')}", "${obj.title.indexOf(
     "'"
-  )}")' class="border-0 bottoni-album">${
+  )}")' class="bottoni-album">${
     obj.title
   }</button><br /><a href="artist.html?id=${
     obj.artist.id
